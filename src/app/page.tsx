@@ -9,6 +9,7 @@ import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import PageLoader from '@/components/PageLoader';
 import ParticlesBackground from '@/components/ParticlesBackground';
+import LogoCarouselParticles from '@/components/LogoCarousel3D';
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <LogoCarousel />
+        <LogoCarouselParticles/>
         <Portfolio />
         <Features />
         <Testimonials />

@@ -1,14 +1,8 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useEffect, useRef, Suspense } from 'react';
-import dynamic from 'next/dynamic';
-
-// Dynamically import 3D component (important for SSR)
-const FloatingOrb = dynamic(() => import('./FloatingOrb'), {
-  ssr: false,
-  loading: () => <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px]" />
-});
+import { useEffect, useRef } from 'react';
+import CornerPeel from './CornerPeel';
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -51,17 +45,17 @@ export default function Hero() {
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
     >
+      {/* Corner Peels - Clean effect without orb */}
+      <CornerPeel position="top-right" color="#FF8C00" size={120} />
+      <CornerPeel position="bottom-left" color="#FFA500" size={100} />
+      
       {/* Star Field Background */}
       <div 
         ref={starFieldRef}
         className="absolute inset-0 pointer-events-none"
       />
       
-      {/* 3D Floating Orb */}
-      <Suspense fallback={null}>
-        <FloatingOrb />
-      </Suspense>
-      
+      {/* Main Content - No orb interference */}
       <motion.div 
         style={{ opacity, scale }}
         className="max-w-6xl mx-auto text-center relative z-10 px-6"
