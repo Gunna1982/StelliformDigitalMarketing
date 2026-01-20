@@ -6,9 +6,14 @@ import Lenis from '@studio-freight/lenis';
 export default function SmoothScrolling() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      // ⬇️ MAIN SPEED CONTROL (higher = slower)
+      duration: 4.1, // was 1.2 → now ~75% slower
+
+      // Smooth, cinematic easing (good for animations)
+      easing: (t: number) => 1 - Math.pow(1 - t, 4),
+
       smoothWheel: true,
+      //smoothTouch: false, // keep touch responsive
     });
 
     function raf(time: number) {

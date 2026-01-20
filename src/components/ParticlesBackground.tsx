@@ -1,7 +1,7 @@
 'use client';
 
-import { useMemo, useRef, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
 type TwinkleData = {
@@ -27,8 +27,8 @@ function makeTwinkleData(count: number): TwinkleData {
 
   for (let i = 0; i < count; i++) {
     phase[i] = Math.random() * Math.PI * 2;
-    speed[i] = 0.6 + Math.random() * 1.8;  // each star flickers at its own pace
-    amp[i] = 0.35 + Math.random() * 0.65;  // each star has its own flicker intensity
+    speed[i] = 0.6 + Math.random() * 1.8;
+    amp[i] = 0.35 + Math.random() * 0.65;
   }
 
   return { phase, speed, amp };
@@ -49,22 +49,15 @@ const vertexShader = `
 
   void main() {
     vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-
-    // Distance from camera (in view space)
     float dist = length(mvPosition.xyz);
 
-    // Depth-based fade: near = brighter, far = dimmer
-    // uNear smaller number, uFar larger number
     vFade = smoothstep(uFar, uNear, dist);
 
-    // Per-star twinkle (each star gets unique phase/speed/amplitude)
     float wave = sin(uTime * aSpeed + aPhase);
     float micro = sin(uTime * (aSpeed * 3.5) + aPhase * 1.37);
     float tw = 0.6 + 0.4 * wave + 0.15 * micro;
     vTwinkle = clamp(tw * (0.6 + 0.4 * aAmp), 0.0, 1.5);
 
-    // Size attenuation (stars get smaller as they are farther away)
-    // Keep it stable and clamp so points don't explode near camera.
     float atten = 1.0 / max(0.7, dist);
     gl_PointSize = clamp(uSize * 240.0 * atten, 1.5, 7.0);
 
@@ -81,35 +74,76 @@ const fragmentShader = `
   varying float vFade;
 
   void main() {
-    // gl_PointCoord is [0..1] across the square point
     vec2 uv = gl_PointCoord - 0.5;
     float d = length(uv);
 
-    // Soft star: bright core + glow falloff
     float core = smoothstep(0.18, 0.0, d);
     float glow = smoothstep(0.5, 0.0, d);
-
-    // Sparkle ring (subtle)
     float ring = smoothstep(0.35, 0.25, d) * 0.15;
 
     float alpha = (core * 0.9 + glow * 0.55 + ring) * vFade;
-
-    // Twinkle affects brightness more than alpha (feels like real flicker)
     float brightness = (0.65 + 0.85 * vTwinkle) * vFade;
 
-    // Slight silver/white shift (cooler highlights)
     vec3 color = uColor;
     color.b = min(1.0, color.b + 0.12);
 
-    // Additive-friendly output: color carries most of the “light”
     vec3 outColor = color * brightness;
 
-    // Kill the square corners (true round stars)
     if (alpha <= 0.001) discard;
 
     gl_FragColor = vec4(outColor, alpha);
   }
 `;
+
+/**
+ * Subtle camera parallax:
+ * - tracks mouse in normalized -1..1 space
+ * - eases camera position to target
+ * - keeps camera looking at center
+ */
+function CameraParallax() {
+  const { camera } = useThree();
+
+  // target mouse position (-1..1)
+  const targetRef = useRef({ x: 0, y: 0 });
+
+  // reusable vectors (avoid allocations)
+  const desired = useMemo(() => new THREE.Vector3(), []);
+  const lookAt = useMemo(() => new THREE.Vector3(0, 0, 0), []);
+
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      const nx = (e.clientX / window.innerWidth) * 2 - 1;
+      const ny = (e.clientY / window.innerHeight) * 2 - 1;
+
+      // invert Y so moving mouse up moves camera up (feels natural)
+      targetRef.current.x = nx;
+      targetRef.current.y = -ny;
+    };
+
+    window.addEventListener('pointermove', onMove, { passive: true });
+    return () => window.removeEventListener('pointermove', onMove);
+  }, []);
+
+  useFrame(() => {
+    // Very subtle parallax amounts
+    const PARALLAX_X = 0.35; // left/right
+    const PARALLAX_Y = 0.20; // up/down
+
+    // Keep the same base Z and gently shift X/Y
+    desired.set(
+      targetRef.current.x * PARALLAX_X,
+      targetRef.current.y * PARALLAX_Y,
+      5
+    );
+
+    // Smooth easing (lerp)
+    camera.position.lerp(desired, 0.05);
+    camera.lookAt(lookAt);
+  });
+
+  return null;
+}
 
 function Particles() {
   const pointsRef = useRef<THREE.Points>(null);
@@ -117,7 +151,6 @@ function Particles() {
 
   const COUNT = 2000;
 
-  // Generate once per mount (no effects, no ref.current reads in render)
   const [positions] = useState<Float32Array>(() => makePositions(COUNT));
   const [twinkle] = useState<TwinkleData>(() => makeTwinkleData(COUNT));
 
@@ -133,9 +166,9 @@ function Particles() {
 
     const t = clock.getElapsedTime();
 
-    // Motion = 70% of the original
-    pts.rotation.y = t * 0.035; // original 0.05
-    pts.rotation.x = Math.sin(t * 0.07) * 0.1; // original sin(t*0.1)*0.1
+    // 70% of original motion
+    pts.rotation.y = t * 0.035;
+    pts.rotation.x = Math.sin(t * 0.07) * 0.1;
 
     mat.uniforms.uTime.value = t;
   });
@@ -158,10 +191,10 @@ function Particles() {
         blending={THREE.AdditiveBlending}
         uniforms={{
           uTime: { value: 0 },
-          uSize: { value: 1.0 },          // overall size “knob”
-          uNear: { value: 4.0 },          // closer than this = strong
-          uFar: { value: 18.0 },          // farther than this = faint
-          uColor: { value: new THREE.Color('#ffffff') }, // silver/white base
+          uSize: { value: 1.0 },
+          uNear: { value: 4.0 },
+          uFar: { value: 18.0 },
+          uColor: { value: new THREE.Color('#ffffff') },
         }}
       />
     </points>
@@ -175,6 +208,7 @@ export default function ParticlesBackground() {
         camera={{ position: [0, 0, 5], fov: 75 }}
         gl={{ antialias: true, alpha: true }}
       >
+        <CameraParallax />
         <Particles />
       </Canvas>
     </div>

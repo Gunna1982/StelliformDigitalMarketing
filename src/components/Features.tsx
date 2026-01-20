@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import CornerPeel from './CornerPeel';
 
 const features = [
   {
@@ -16,7 +17,8 @@ const features = [
       label: 'CONCEPT A',
       title: 'Visual Impact',
       description: 'Strategic layout designed for maximum user retention.'
-    }
+    },
+    hasCornerPeel: true // Add this flag
   },
   {
     title: 'Art Direction',
@@ -66,8 +68,16 @@ export default function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
             viewport={{ once: true }}
-            className="feature-card"
+            className="feature-card relative overflow-hidden"
           >
+            {/* Add corner peels to Web Design card */}
+            {feature.hasCornerPeel && (
+              <>
+                <CornerPeel position="top-right" color="#FFA500" size={60} />
+                <CornerPeel position="bottom-left" color="#FF8C00" size={50} />
+              </>
+            )}
+
             <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
             <p className="text-gray-400 mb-8">{feature.description}</p>
             
@@ -85,7 +95,7 @@ export default function Features() {
             )}
             
             {feature.concept && (
-              <div className="bg-gray-900 rounded-lg p-6">
+              <div className="bg-gray-900 rounded-lg p-6 relative z-10">
                 <div className="text-orange-500 text-xs mb-2">{feature.concept.label}</div>
                 <div className="text-white font-semibold mb-2">{feature.concept.title}</div>
                 <div className="text-gray-500 text-sm">{feature.concept.description}</div>
@@ -154,4 +164,4 @@ export default function Features() {
       </div>
     </section>
   );
-}
+};
