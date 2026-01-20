@@ -1,11 +1,14 @@
 import {tailwindcss:preflight}
 @import "tailwindcss";
-@tailwind utilities;
-@tailwind utilities;
 
 @layer base {
+  * {
+    @apply border-border;
+  }
+  
   body {
-    @apply bg-black text-white;
+    @apply bg-black text-white antialiased;
+    overflow-x: hidden;
   }
   
   html {
@@ -17,4 +20,49 @@ import {tailwindcss:preflight}
   .gradient-text {
     @apply bg-gradient-to-r from-orange-400 via-amber-500 to-yellow-500 bg-clip-text text-transparent;
   }
+  
+  .golden-glow {
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
+  }
+  
+  .feature-card {
+    @apply bg-white/[0.03] border border-white/10 rounded-2xl p-8 transition-all duration-500;
+  }
+  
+  .feature-card:hover {
+    @apply border-orange-500/50 -translate-y-2;
+    box-shadow: 0 20px 40px rgba(255, 165, 0, 0.2);
+  }
 }
+
+/* Star animation */
+@keyframes twinkle {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.2); 
+  }
+}
+
+.star {
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+/* Logo scroll animation */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+/*@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-orange-400 via-amber-500 to-yellow-500 bg-clip-text text-transparent;
+  }
+}*/
