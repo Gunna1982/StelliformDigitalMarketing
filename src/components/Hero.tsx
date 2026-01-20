@@ -1,7 +1,14 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, Suspense } from 'react';
+import dynamic from 'next/dynamic';
+
+// Dynamically import 3D component (important for SSR)
+const FloatingOrb = dynamic(() => import('./FloatingOrb'), {
+  ssr: false,
+  loading: () => <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px]" />
+});
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -26,16 +33,13 @@ export default function Hero() {
       const star = document.createElement('div');
       star.className = 'star absolute rounded-full bg-orange-500';
       
-      // Random position
       star.style.left = Math.random() * 100 + '%';
       star.style.top = Math.random() * 100 + '%';
       
-      // Random size (1-3px)
       const size = Math.random() * 2 + 1;
       star.style.width = size + 'px';
       star.style.height = size + 'px';
       
-      // Random animation delay
       star.style.animationDelay = Math.random() * 3 + 's';
       
       starField.appendChild(star);
@@ -52,6 +56,11 @@ export default function Hero() {
         ref={starFieldRef}
         className="absolute inset-0 pointer-events-none"
       />
+      
+      {/* 3D Floating Orb */}
+      <Suspense fallback={null}>
+        <FloatingOrb />
+      </Suspense>
       
       <motion.div 
         style={{ opacity, scale }}
@@ -115,7 +124,7 @@ export default function Hero() {
           className="mt-32"
         >
           <p className="text-sm text-gray-500 mb-4 tracking-widest">TRUSTED BY FORWARD-THINKING BRANDS</p>
-          <a href="#" className="text-sm text-gray-400 hover:text-orange-400 transition">
+          <a href="#work" className="text-sm text-gray-400 hover:text-orange-400 transition">
             Read the story →
           </a>
         </motion.div>
