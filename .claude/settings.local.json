@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(code:*)",
+      "Bash(git remote rename:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
