@@ -31,7 +31,7 @@ export default function Navigation() {
           >
             Stelliformdigital
           </motion.div>
-          
+
           <div className="hidden md:flex items-center gap-8 text-sm">
             {['Work', 'Services', 'About', 'Contact'].map((item, index) => (
               <motion.a
@@ -47,27 +47,36 @@ export default function Navigation() {
             ))}
           </div>
         </div>
-        
+
         <div className="flex items-center gap-4">
           <motion.a
             href="#contact"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="hidden md:block hover:text-orange-400 transition-colors text-sm"
-          >
-            Hire Me
-          </motion.a>
-          <motion.button
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.7 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-6 py-2 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg font-semibold text-sm"
+            className="group relative px-6 py-2 rounded-lg font-semibold text-sm overflow-hidden"
           >
-            BOOK CALL →
-          </motion.button>
+            {/* Animated gradient background */}
+            <span className="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500" />
+
+            {/* Shine effect on hover */}
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+
+            {/* Glow effect */}
+            <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-orange-400 to-amber-400 blur-lg -z-10" />
+
+            {/* Button text */}
+            <span className="relative z-10 flex items-center gap-2 text-white">
+              BOOK CALL
+              <motion.span
+                className="inline-block"
+                animate={{ x: [0, 4, 0] }}
+                transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+              >
+                →
+              </motion.span>
+            </span>
+          </motion.a>
         </div>
       </div>
     </motion.nav>

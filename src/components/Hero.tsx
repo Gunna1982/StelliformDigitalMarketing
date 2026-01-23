@@ -86,29 +86,70 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-xl text-gray-400 mb-12 max-w-3xl mx-auto"
         >
-          Crafting digital experiences that merge art and technology. From branding to web development, I build it all.
+          Crafting digital experiences that merge art and technology. From branding to web development, we build it all.
         </motion.p>
         
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex items-center justify-center gap-4 flex-wrap"
+          className="flex items-center justify-center gap-6 flex-wrap"
         >
-          <motion.button
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(255, 165, 0, 0.4)" }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg font-semibold"
+          {/* View Portfolio Button - Magnetic Glow Effect */}
+          <motion.a
+            href="#work"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="group relative px-8 py-4 rounded-xl font-semibold overflow-hidden cursor-pointer"
           >
-            View Portfolio →
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 165, 0, 0.1)" }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 border border-orange-500/50 rounded-lg font-semibold transition-colors"
+            {/* Base gradient */}
+            <span className="absolute inset-0 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500 bg-[length:200%_100%] group-hover:animate-gradient-shift" />
+
+            {/* Animated border glow */}
+            <span className="absolute -inset-[2px] bg-gradient-to-r from-orange-400 via-amber-300 to-orange-400 rounded-xl opacity-0 group-hover:opacity-75 blur-sm transition-opacity duration-300 -z-10" />
+
+            {/* Sweep shine effect */}
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+
+            {/* Button content */}
+            <span className="relative z-10 flex items-center gap-3 text-white">
+              <span>View Portfolio</span>
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </motion.a>
+
+          {/* Contact Us Button - Outline with Fill Animation */}
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="group relative px-8 py-4 rounded-xl font-semibold overflow-hidden cursor-pointer"
           >
-            Contact Me
-          </motion.button>
+            {/* Animated border */}
+            <span className="absolute inset-0 rounded-xl border-2 border-orange-500/50 group-hover:border-orange-400 transition-colors duration-300" />
+
+            {/* Fill animation from bottom */}
+            <span className="absolute inset-0 bg-gradient-to-t from-orange-500/20 via-orange-500/10 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+
+            {/* Corner accents */}
+            <span className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-orange-500 rounded-tl-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-orange-500 rounded-tr-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-orange-500 rounded-bl-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-orange-500 rounded-br-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+            {/* Glow effect */}
+            <span className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_30px_rgba(255,165,0,0.3)] -z-10" />
+
+            {/* Button content */}
+            <span className="relative z-10 flex items-center gap-3 text-white group-hover:text-orange-100 transition-colors duration-300">
+              <span>Contact Us</span>
+              <svg className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+              </svg>
+            </span>
+          </motion.a>
         </motion.div>
 
         <motion.div
