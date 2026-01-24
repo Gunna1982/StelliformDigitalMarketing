@@ -1,48 +1,62 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import CornerPeel from './CornerPeel';
 
 const features = [
   {
-    title: 'Brand Identity',
-    description: 'Visual systems that tell your story. Logos, color palettes, and typography.',
+    title: 'Website Design',
+    description: 'Custom-built websites that captivate visitors and drive conversions. From landing pages to full-scale web applications.',
+    pricing: 'Starting at $2,500',
+    icon: '🌐',
+    highlights: ['Responsive Design', 'SEO Optimized', 'Fast Loading'],
+    hasCornerPeel: true
+  },
+  {
+    title: 'Lead Generation',
+    description: 'Strategic campaigns that attract qualified prospects and fill your sales pipeline with high-intent leads.',
+    pricing: 'Starting at $1,500/mo',
+    icon: '🎯',
+    highlights: ['Qualified Leads', 'CRM Integration', 'Analytics Dashboard'],
     hasButton: true
   },
   {
-    title: 'Web Design',
-    description: 'Immersive web experiences designed to convert visitors into loyal customers.',
-    concept: {
-      label: 'CONCEPT A',
-      title: 'Visual Impact',
-      description: 'Strategic layout designed for maximum user retention.'
-    },
-    hasCornerPeel: true // Add this flag
+    title: 'Email & Social Media',
+    description: 'Engaging content and automated sequences that nurture relationships and drive repeat business.',
+    pricing: 'Starting at $1,000/mo',
+    icon: '📧',
+    highlights: ['Email Automation', 'Social Strategy', 'Content Calendar'],
+    styles: ['Email Campaigns', 'Social Management']
   },
   {
-    title: 'Art Direction',
-    description: 'Defining the visual language, photography, and tone for your brand.',
-    styles: ['Cinematic', 'Minimalist']
-  },
-  {
-    title: 'Strategy',
-    description: 'Data-driven insights to position your brand for market leadership.',
+    title: 'Custom Development',
+    description: 'Bespoke software solutions, APIs, and integrations tailored to your unique business requirements.',
+    pricing: 'Starting at $5,000',
+    icon: '⚡',
+    highlights: ['Custom APIs', 'Integrations', 'Automation'],
     team: true
   },
   {
-    title: 'Content Production',
-    description: 'High-quality asset creation, from photography to 3D motion design.',
+    title: 'Brand Strategy',
+    description: 'Comprehensive brand positioning, visual identity, and messaging that sets you apart from competitors.',
+    pricing: 'Starting at $3,000',
+    icon: '✦',
+    highlights: ['Brand Identity', 'Messaging', 'Guidelines'],
     passion: true
+  },
+  {
+    title: 'SEO & Digital Marketing',
+    description: 'Data-driven strategies to improve your search rankings and maximize your digital presence.',
+    pricing: 'Starting at $1,200/mo',
+    icon: '📈',
+    highlights: ['Keyword Research', 'On-Page SEO', 'Performance Tracking'],
+    seo: true
   }
 ];
 
 export default function Features() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
 
   return (
     <section id="services" ref={containerRef} className="max-w-7xl mx-auto py-20 px-6">
@@ -53,14 +67,14 @@ export default function Features() {
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h2 className="text-5xl font-bold mb-4">Powerful Features</h2>
+        <h2 className="text-5xl font-bold mb-4">Our Services</h2>
         <p className="text-xl text-gray-400">
-          Everything you need to create, collaborate, and convert. Built for modern teams.
+          Full-service digital solutions to grow your business. From design to development to marketing.
         </p>
       </motion.div>
 
       {/* First Row - 3 Cards */}
-      <div className="grid md:grid-cols-3 gap-8 mb-12">
+      <div className="grid md:grid-cols-3 gap-8 mb-8">
         {features.slice(0, 3).map((feature, index) => (
           <motion.div
             key={feature.title}
@@ -68,9 +82,8 @@ export default function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
             viewport={{ once: true }}
-            className="feature-card relative overflow-hidden"
+            className="feature-card relative overflow-hidden group"
           >
-            {/* Add corner peels to Web Design card */}
             {feature.hasCornerPeel && (
               <>
                 <CornerPeel position="top-right" color="#FFA500" size={60} />
@@ -78,48 +91,42 @@ export default function Features() {
               </>
             )}
 
-            <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
-            <p className="text-gray-400 mb-8">{feature.description}</p>
-            
-            {feature.hasButton && (
-              <>
-                <div className="aspect-video bg-gradient-to-br from-orange-900/20 to-transparent rounded-lg mb-4" />
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg font-semibold"
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-3xl">{feature.icon}</span>
+              <h3 className="text-2xl font-bold">{feature.title}</h3>
+            </div>
+
+            <p className="text-gray-400 mb-6">{feature.description}</p>
+
+            {/* Highlights */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {feature.highlights.map((highlight, i) => (
+                <span key={i} className="px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs text-orange-400">
+                  {highlight}
+                </span>
+              ))}
+            </div>
+
+            {/* Pricing */}
+            <div className="mt-auto pt-4 border-t border-white/10">
+              <div className="flex items-center justify-between">
+                <span className="text-orange-400 font-semibold">{feature.pricing}</span>
+                <motion.a
+                  href="#contact"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg text-sm font-semibold"
                 >
-                  ✦ Start Project
-                </motion.button>
-              </>
-            )}
-            
-            {feature.concept && (
-              <div className="bg-gray-900 rounded-lg p-6 relative z-10">
-                <div className="text-orange-500 text-xs mb-2">{feature.concept.label}</div>
-                <div className="text-white font-semibold mb-2">{feature.concept.title}</div>
-                <div className="text-gray-500 text-sm">{feature.concept.description}</div>
+                  Get Started
+                </motion.a>
               </div>
-            )}
-            
-            {feature.styles && (
-              <div className="bg-gray-900 rounded-lg p-6">
-                <div className="text-orange-500 text-xs mb-2">STYLE SETTINGS</div>
-                <div className="border-l-4 border-orange-500 pl-4">
-                  {feature.styles.map((style, i) => (
-                    <div key={i} className={i === 0 ? 'text-white font-semibold mb-2' : 'text-gray-500 text-sm'}>
-                      {style}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            </div>
           </motion.div>
         ))}
       </div>
 
-      {/* Second Row - 2 Cards */}
-      <div className="grid md:grid-cols-2 gap-8">
+      {/* Second Row - 3 Cards */}
+      <div className="grid md:grid-cols-3 gap-8">
         {features.slice(3).map((feature, index) => (
           <motion.div
             key={feature.title}
@@ -127,41 +134,41 @@ export default function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
             viewport={{ once: true }}
-            className="feature-card"
+            className="feature-card relative overflow-hidden group"
           >
-            <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
-            <p className="text-gray-400 mb-8">{feature.description}</p>
-            
-            {feature.team && (
-              <div className="bg-gray-900 rounded-lg p-6">
-                <p className="text-gray-400 mb-4">
-                  Our launch strategy focuses on aggressive growth — <span className="text-orange-400">market penetration</span> and brand equity.
-                </p>
-                <div className="bg-gray-800 rounded-lg p-4">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center text-xs">ST</div>
-                    <div>
-                      <div className="font-semibold text-sm">Strategy Team</div>
-                      <div className="text-xs text-gray-500">Target audience analysis complete.</div>
-                    </div>
-                  </div>
-                  <button className="w-full mt-2 py-2 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg text-sm font-semibold">
-                    ✓ Approve
-                  </button>
-                </div>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-3xl">{feature.icon}</span>
+              <h3 className="text-2xl font-bold">{feature.title}</h3>
+            </div>
+
+            <p className="text-gray-400 mb-6">{feature.description}</p>
+
+            {/* Highlights */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {feature.highlights.map((highlight, i) => (
+                <span key={i} className="px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs text-orange-400">
+                  {highlight}
+                </span>
+              ))}
+            </div>
+
+            {/* Pricing */}
+            <div className="mt-auto pt-4 border-t border-white/10">
+              <div className="flex items-center justify-between">
+                <span className="text-orange-400 font-semibold">{feature.pricing}</span>
+                <motion.a
+                  href="#contact"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg text-sm font-semibold"
+                >
+                  Get Started
+                </motion.a>
               </div>
-            )}
-            
-            {feature.passion && (
-              <div className="aspect-video bg-gradient-to-br from-orange-900/10 to-transparent rounded-lg flex items-center justify-center">
-                <p className="text-4xl">
-                  Create with <span className="gradient-text font-bold">passion.</span>
-                </p>
-              </div>
-            )}
+            </div>
           </motion.div>
         ))}
       </div>
     </section>
   );
-};
+}
