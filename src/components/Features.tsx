@@ -74,6 +74,7 @@ const features: Array<{
 
 function BillingBadge({ billing }: { billing: ServiceBilling }) {
   const label = billing === 'one-time' ? 'ONE-TIME' : 'ONGOING';
+
   return (
     <span
       className={`text-[11px] tracking-wider font-semibold px-2.5 py-1 rounded-full border ${
@@ -84,6 +85,70 @@ function BillingBadge({ billing }: { billing: ServiceBilling }) {
     >
       {label}
     </span>
+  );
+}
+
+function ServiceCard({ feature, index }: { feature: (typeof features)[number]; index: number }) {
+  const ctaLabel = feature.billing === 'one-time' ? 'Start a Project' : 'Start Monthly Growth';
+  const ctaHint = feature.billing === 'one-time' ? 'One-time project' : 'Ongoing monthly support';
+
+  return (
+    <motion.div
+      key={feature.title}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.2 }}
+      viewport={{ once: true }}
+      className="feature-card relative overflow-hidden group"
+    >
+      {feature.hasCornerPeel && (
+        <>
+          <CornerPeel position="top-right" color="#FFA500" size={60} />
+          <CornerPeel position="bottom-left" color="#FF8C00" size={50} />
+        </>
+      )}
+
+      <div className="flex items-start justify-between gap-3 mb-4">
+        <div className="flex items-center gap-3">
+          <span className="text-3xl">{feature.icon}</span>
+          <h3 className="text-2xl font-bold">{feature.title}</h3>
+        </div>
+        <BillingBadge billing={feature.billing} />
+      </div>
+
+      <p className="text-gray-400 mb-6">{feature.description}</p>
+
+      {/* Highlights */}
+      <div className="flex flex-wrap gap-2 mb-6">
+        {feature.highlights.map((highlight, i) => (
+          <span
+            key={i}
+            className="px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs text-orange-400"
+          >
+            {highlight}
+          </span>
+        ))}
+      </div>
+
+      {/* Pricing + CTA */}
+      <div className="mt-auto pt-4 border-t border-white/10">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex flex-col">
+            <span className="text-orange-400 font-semibold">{feature.pricing}</span>
+            <span className="text-xs text-gray-500">{ctaHint}</span>
+          </div>
+
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg text-sm font-semibold whitespace-nowrap"
+          >
+            {ctaLabel}
+          </motion.a>
+        </div>
+      </div>
+    </motion.div>
   );
 }
 
@@ -104,7 +169,7 @@ export default function Features() {
           Pick what you need. Choose one-time builds or ongoing growth support.
         </p>
 
-        {/* tiny legend to reduce confusion */}
+        {/* Legend */}
         <div className="mt-6 flex items-center justify-center gap-3 flex-wrap text-sm text-gray-500">
           <span className="inline-flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-white/30" />
@@ -117,128 +182,17 @@ export default function Features() {
         </div>
       </motion.div>
 
-      {/* First Row - 3 Cards */}
+      {/* Row 1 */}
       <div className="grid md:grid-cols-3 gap-8 mb-8">
         {features.slice(0, 3).map((feature, index) => (
-          <motion.div
-            key={feature.title}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-            viewport={{ once: true }}
-            className="feature-card relative overflow-hidden group"
-          >
-            {feature.hasCornerPeel && (
-              <>
-                <CornerPeel position="top-right" color="#FFA500" size={60} />
-                <CornerPeel position="bottom-left" color="#FF8C00" size={50} />
-              </>
-            )}
-
-            <div className="flex items-start justify-between gap-3 mb-4">
-              <div className="flex items-center gap-3">
-                <span className="text-3xl">{feature.icon}</span>
-                <h3 className="text-2xl font-bold">{feature.title}</h3>
-              </div>
-              <BillingBadge billing={feature.billing} />
-            </div>
-
-            <p className="text-gray-400 mb-6">{feature.description}</p>
-
-            {/* Highlights */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {feature.highlights.map((highlight, i) => (
-                <span
-                  key={i}
-                  className="px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs text-orange-400"
-                >
-                  {highlight}
-                </span>
-              ))}
-            </div>
-
-            {/* Pricing + CTA */}
-            <div className="mt-auto pt-4 border-t border-white/10">
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex flex-col">
-                  <span className="text-orange-400 font-semibold">{feature.pricing}</span>
-                  <span className="text-xs text-gray-500">
-                    {feature.billing === 'one-time'
-                      ? 'One-time project'
-                      : 'Ongoing monthly support'}
-                  </span>
-                </div>
-
-                <motion.a
-                  href="#contact"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg text-sm font-semibold whitespace-nowrap"
-                >
-                  Get Started
-                </motion.a>
-              </div>
-            </div>
-          </motion.div>
+          <ServiceCard key={feature.title} feature={feature} index={index} />
         ))}
       </div>
 
-      {/* Second Row - 3 Cards */}
+      {/* Row 2 */}
       <div className="grid md:grid-cols-3 gap-8">
         {features.slice(3).map((feature, index) => (
-          <motion.div
-            key={feature.title}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-            viewport={{ once: true }}
-            className="feature-card relative overflow-hidden group"
-          >
-            <div className="flex items-start justify-between gap-3 mb-4">
-              <div className="flex items-center gap-3">
-                <span className="text-3xl">{feature.icon}</span>
-                <h3 className="text-2xl font-bold">{feature.title}</h3>
-              </div>
-              <BillingBadge billing={feature.billing} />
-            </div>
-
-            <p className="text-gray-400 mb-6">{feature.description}</p>
-
-            {/* Highlights */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {feature.highlights.map((highlight, i) => (
-                <span
-                  key={i}
-                  className="px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs text-orange-400"
-                >
-                  {highlight}
-                </span>
-              ))}
-            </div>
-
-            {/* Pricing + CTA */}
-            <div className="mt-auto pt-4 border-t border-white/10">
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex flex-col">
-                  <span className="text-orange-400 font-semibold">{feature.pricing}</span>
-                  <span className="text-xs text-gray-500">
-                    {feature.billing === 'one-time'
-                      ? 'One-time project'
-                      : 'Ongoing monthly support'}
-                  </span>
-                </div>
-
-                <motion.a
-                  href="#contact"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg text-sm font-semibold whitespace-nowrap"
-                >
-                  Get Started
-                </motion.a>
-              </div>
-            </div>
-          </motion.div>
+          <ServiceCard key={feature.title} feature={feature} index={index} />
         ))}
       </div>
     </section>

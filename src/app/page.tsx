@@ -10,6 +10,7 @@ import Footer from '@/components/Footer';
 import PageLoader from '@/components/PageLoader';
 import ParticlesBackground from '@/components/ParticlesBackground';
 import LogoCarouselParticles from '@/components/LogoCarousel3D';
+import Hero2 from '@/components/Hero2';
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
       <ParticlesBackground />
       <Navigation />
       <main>
-        <Hero />
+        <Hero2/>
         <LogoCarouselParticles/>
         <Portfolio />
         <Features />

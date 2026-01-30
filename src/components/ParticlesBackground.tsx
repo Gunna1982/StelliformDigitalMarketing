@@ -103,11 +103,8 @@ const fragmentShader = `
  */
 function CameraParallax() {
   const { camera } = useThree();
-
-  // target mouse position (-1..1)
   const targetRef = useRef({ x: 0, y: 0 });
 
-  // reusable vectors (avoid allocations)
   const desired = useMemo(() => new THREE.Vector3(), []);
   const lookAt = useMemo(() => new THREE.Vector3(0, 0, 0), []);
 
@@ -116,7 +113,6 @@ function CameraParallax() {
       const nx = (e.clientX / window.innerWidth) * 2 - 1;
       const ny = (e.clientY / window.innerHeight) * 2 - 1;
 
-      // invert Y so moving mouse up moves camera up (feels natural)
       targetRef.current.x = nx;
       targetRef.current.y = -ny;
     };
@@ -126,18 +122,11 @@ function CameraParallax() {
   }, []);
 
   useFrame(() => {
-    // Very subtle parallax amounts
-    const PARALLAX_X = 0.35; // left/right
-    const PARALLAX_Y = 0.20; // up/down
+    const PARALLAX_X = 0.35;
+    const PARALLAX_Y = 0.20;
 
-    // Keep the same base Z and gently shift X/Y
-    desired.set(
-      targetRef.current.x * PARALLAX_X,
-      targetRef.current.y * PARALLAX_Y,
-      5
-    );
+    desired.set(targetRef.current.x * PARALLAX_X, targetRef.current.y * PARALLAX_Y, 5);
 
-    // Smooth easing (lerp)
     camera.position.lerp(desired, 0.05);
     camera.lookAt(lookAt);
   });
@@ -166,7 +155,6 @@ function Particles() {
 
     const t = clock.getElapsedTime();
 
-    // 70% of original motion
     pts.rotation.y = t * 0.035;
     pts.rotation.x = Math.sin(t * 0.07) * 0.1;
 
@@ -203,11 +191,10 @@ function Particles() {
 
 export default function ParticlesBackground() {
   return (
-    <div className="fixed inset-0 pointer-events-none opacity-30">
-      <Canvas
-        camera={{ position: [0, 0, 5], fov: 75 }}
-        gl={{ antialias: true, alpha: true }}
-      >
+    // -z-10 ensures it sits behind everything.
+    // pointer-events-none ensures it NEVER blocks clicks (pricing toggle, buttons, etc.)
+    <div className="fixed inset-0 -z-10 pointer-events-none opacity-30">
+      <Canvas camera={{ position: [0, 0, 5], fov: 75 }} gl={{ antialias: true, alpha: true }}>
         <CameraParallax />
         <Particles />
       </Canvas>
