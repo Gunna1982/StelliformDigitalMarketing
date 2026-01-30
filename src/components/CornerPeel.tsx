@@ -10,7 +10,7 @@ interface CornerPeelProps {
 
 export default function CornerPeel({ 
   position = 'top-right', 
-  color = '#FF8C00',
+  color = '#ef4444',
   size = 80 
 }: CornerPeelProps) {
   

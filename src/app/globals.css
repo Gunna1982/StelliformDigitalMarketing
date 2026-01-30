@@ -56,18 +56,18 @@
 
  /* Shooting star glow effect */
   .star-glow {
-    box-shadow: 0 0 20px 5px rgba(255, 193, 7, 0.5),
-                0 0 40px 10px rgba(255, 152, 0, 0.3);
+    box-shadow: 0 0 20px 5px rgba(239, 68, 68, 0.5),
+                0 0 40px 10px rgba(220, 38, 38, 0.3);
   }
 
  /* Light beam specific effects */
   .beam-glow {
     filter: blur(12px);
-    background: linear-gradient(to top, 
-      transparent 0%, 
-      rgba(255, 193, 7, 0.4) 20%, 
-      rgba(255, 152, 0, 0.7) 50%, 
-      rgba(255, 87, 34, 0.9) 100%
+    background: linear-gradient(to top,
+      transparent 0%,
+      rgba(248, 113, 113, 0.4) 20%,
+      rgba(239, 68, 68, 0.7) 50%,
+      rgba(220, 38, 38, 0.9) 100%
     );
   }
   

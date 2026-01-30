@@ -73,7 +73,7 @@ export default function Testimonials() {
           <motion.div
             key={index}
             variants={item}
-            whileHover={{ y: -5, borderColor: 'rgba(255, 165, 0, 0.3)' }}
+            whileHover={{ y: -5, borderColor: 'rgba(220, 38, 38, 0.3)' }}
             className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 transition-all duration-300 flex flex-col"
           >
             {/* Star Rating */}
@@ -85,7 +85,7 @@ export default function Testimonials() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className="text-orange-400 text-xl"
+                  className="text-red-400 text-xl"
                 >
                   ★
                 </motion.span>
@@ -98,14 +98,14 @@ export default function Testimonials() {
             </p>
             
             {/* Result Highlight */}
-            <div className="mb-6 p-4 bg-gradient-to-r from-orange-500/10 to-transparent border-l-4 border-orange-400 rounded-r">
+            <div className="mb-6 p-4 bg-gradient-to-r from-red-500/10 to-transparent border-l-4 border-red-400 rounded-r">
               <div className="text-sm text-gray-400 mb-1">Key Result:</div>
-              <div className="font-semibold text-orange-300">{testimonial.result}</div>
+              <div className="font-semibold text-red-300">{testimonial.result}</div>
             </div>
             
             {/* Author Info */}
             <div className="flex items-center gap-3 mt-auto pt-4 border-t border-white/10">
-              <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-sm font-bold">
+              <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center text-sm font-bold">
                 {testimonial.avatar}
               </div>
               <div>
@@ -125,10 +125,10 @@ export default function Testimonials() {
         viewport={{ once: true }}
         className="text-center mt-16"
       >
-        <div className="inline-flex flex-col md:flex-row items-center gap-4 px-8 py-4 bg-orange-500/10 border border-orange-500/30 rounded-2xl">
+        <div className="inline-flex flex-col md:flex-row items-center gap-4 px-8 py-4 bg-red-500/10 border border-red-500/30 rounded-2xl">
           <div className="flex items-center gap-2">
-            <span className="text-orange-400 font-bold text-2xl">5.0</span>
-            <span className="text-orange-400 font-semibold">★★★★★</span>
+            <span className="text-red-400 font-bold text-2xl">5.0</span>
+            <span className="text-red-400 font-semibold">★★★★★</span>
           </div>
           <span className="text-gray-300">Average client rating across all projects</span>
         </div>

@@ -92,7 +92,7 @@ export default function Pricing() {
         viewport={{ once: true }}
         className="text-center mb-4"
       >
-        <div className="inline-flex items-center gap-2 text-orange-400 text-sm mb-4">
+        <div className="inline-flex items-center gap-2 text-red-400 text-sm mb-4">
           <span className="text-xl">💲</span> PRICING
         </div>
       </motion.div>
@@ -138,7 +138,7 @@ export default function Pricing() {
                 : 'text-gray-500 hover:text-gray-300'
             }`}
           >
-            Quarterly <span className="ml-2 text-orange-300 text-xs">Save 10%</span>
+            Quarterly <span className="ml-2 text-red-300 text-xs">Save 10%</span>
           </button>
         </div>
 
@@ -161,7 +161,7 @@ export default function Pricing() {
               whileHover={{ y: -5 }}
               className={`rounded-2xl p-10 transition-all duration-300 ${
                 plan.popular
-                  ? 'bg-orange-500/5 border-2 border-orange-500'
+                  ? 'bg-red-500/5 border-2 border-red-500'
                   : 'bg-white/[0.03] border border-white/10'
               }`}
             >
@@ -170,7 +170,7 @@ export default function Pricing() {
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   transition={{ type: 'spring', stiffness: 200, delay: 0.3 }}
-                  className="bg-orange-500 text-black text-xs font-bold px-3 py-1 rounded-full inline-block mb-4"
+                  className="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-4"
                 >
                   {plan.badge}
                 </motion.div>
@@ -227,7 +227,7 @@ export default function Pricing() {
                         viewport={{ once: true }}
                         className="flex items-start gap-2"
                       >
-                        <span className="text-orange-400 mt-0.5">✓</span>
+                        <span className="text-red-400 mt-0.5">✓</span>
                         <span className="text-sm">{feature}</span>
                       </motion.div>
                     ))}
@@ -239,8 +239,8 @@ export default function Pricing() {
                     whileTap={{ scale: 0.98 }}
                     className={`block text-center w-full py-3 rounded-lg font-semibold transition-all ${
                       plan.popular
-                        ? 'bg-gradient-to-r from-orange-500 to-amber-500'
-                        : 'border border-gray-700 hover:border-orange-400'
+                        ? 'bg-gradient-to-r from-red-600 to-red-500'
+                        : 'border border-gray-700 hover:border-red-400'
                     }`}
                   >
                     Get Started
@@ -263,7 +263,7 @@ export default function Pricing() {
                         viewport={{ once: true }}
                         className="flex items-start gap-2"
                       >
-                        <span className="text-orange-400 mt-0.5">✓</span>
+                        <span className="text-red-400 mt-0.5">✓</span>
                         <span className="text-sm text-gray-200/90">{item}</span>
                       </motion.div>
                     ))}
@@ -271,7 +271,7 @@ export default function Pricing() {
 
                   <motion.a
                     href="#contact"
-                    whileHover={{ scale: 1.02, borderColor: 'rgb(249, 115, 22)' }}
+                    whileHover={{ scale: 1.02, borderColor: 'rgb(239, 68, 68)' }}
                     whileTap={{ scale: 0.98 }}
                     className="block text-center w-full py-3 border border-gray-700 rounded-lg transition-all"
                   >

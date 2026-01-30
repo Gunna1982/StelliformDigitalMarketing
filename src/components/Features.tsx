@@ -80,7 +80,7 @@ function BillingBadge({ billing }: { billing: ServiceBilling }) {
       className={`text-[11px] tracking-wider font-semibold px-2.5 py-1 rounded-full border ${
         billing === 'one-time'
           ? 'border-white/10 bg-white/[0.04] text-gray-300'
-          : 'border-orange-500/25 bg-orange-500/10 text-orange-300'
+          : 'border-red-500/25 bg-red-500/10 text-red-300'
       }`}
     >
       {label}
@@ -103,8 +103,8 @@ function ServiceCard({ feature, index }: { feature: (typeof features)[number]; i
     >
       {feature.hasCornerPeel && (
         <>
-          <CornerPeel position="top-right" color="#FFA500" size={60} />
-          <CornerPeel position="bottom-left" color="#FF8C00" size={50} />
+          <CornerPeel position="top-right" color="#ef4444" size={60} />
+          <CornerPeel position="bottom-left" color="#dc2626" size={50} />
         </>
       )}
 
@@ -123,7 +123,7 @@ function ServiceCard({ feature, index }: { feature: (typeof features)[number]; i
         {feature.highlights.map((highlight, i) => (
           <span
             key={i}
-            className="px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs text-orange-400"
+            className="px-3 py-1 bg-red-500/10 border border-red-500/20 rounded-full text-xs text-red-400"
           >
             {highlight}
           </span>
@@ -134,7 +134,7 @@ function ServiceCard({ feature, index }: { feature: (typeof features)[number]; i
       <div className="mt-auto pt-4 border-t border-white/10">
         <div className="flex items-center justify-between gap-3">
           <div className="flex flex-col">
-            <span className="text-orange-400 font-semibold">{feature.pricing}</span>
+            <span className="text-red-400 font-semibold">{feature.pricing}</span>
             <span className="text-xs text-gray-500">{ctaHint}</span>
           </div>
 
@@ -142,7 +142,7 @@ function ServiceCard({ feature, index }: { feature: (typeof features)[number]; i
             href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg text-sm font-semibold whitespace-nowrap"
+            className="px-4 py-2 bg-gradient-to-r from-red-600 to-red-500 rounded-lg text-sm font-semibold whitespace-nowrap"
           >
             {ctaLabel}
           </motion.a>
@@ -176,7 +176,7 @@ export default function Features() {
             One-time = a build you own
           </span>
           <span className="inline-flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-orange-400/70" />
+            <span className="w-2 h-2 rounded-full bg-red-400/70" />
             Ongoing = monthly growth execution
           </span>
         </div>

@@ -51,20 +51,20 @@ export default function LogoCarousel3D() {
             >
               {client.subtitle ? (
                 <div>
-                  <div className="text-3xl font-bold bg-gradient-to-r from-gray-400 to-gray-600 bg-clip-text text-transparent hover:from-orange-400 hover:to-amber-500 transition-all duration-300">
+                  <div className="text-3xl font-bold bg-gradient-to-r from-gray-400 to-gray-600 bg-clip-text text-transparent hover:from-red-400 hover:to-red-500 transition-all duration-300">
                     {client.name}
                   </div>
                   <div className="text-sm text-gray-700 mt-1">{client.subtitle}</div>
                 </div>
               ) : (
-                <div className="text-3xl font-bold bg-gradient-to-r from-gray-400 to-gray-600 bg-clip-text text-transparent hover:from-orange-400 hover:to-amber-500 transition-all duration-300">
+                <div className="text-3xl font-bold bg-gradient-to-r from-gray-400 to-gray-600 bg-clip-text text-transparent hover:from-red-400 hover:to-red-500 transition-all duration-300">
                   {client.shortName}
                 </div>
               )}
 
               {/* 3D shadow effect */}
               <motion.div
-                className="absolute inset-0 bg-orange-500/10 blur-xl -z-10"
+                className="absolute inset-0 bg-red-500/10 blur-xl -z-10"
                 animate={{
                   opacity: hoveredIndex === index ? 0.5 : 0,
                   scale: hoveredIndex === index ? 1.5 : 1

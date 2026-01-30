@@ -56,9 +56,9 @@ export default function PageLoader() {
                   />
                   <defs>
                     <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#FF8C00" />
-                      <stop offset="50%" stopColor="#FFA500" />
-                      <stop offset="100%" stopColor="#FFD700" />
+                      <stop offset="0%" stopColor="#dc2626" />
+                      <stop offset="50%" stopColor="#ef4444" />
+                      <stop offset="100%" stopColor="#f87171" />
                     </linearGradient>
                   </defs>
                 </svg>
@@ -80,7 +80,7 @@ export default function PageLoader() {
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 2, ease: "easeInOut" }}
-                className="h-full bg-gradient-to-r from-orange-500 to-amber-500"
+                className="h-full bg-gradient-to-r from-red-600 to-red-500"
               />
             </div>
 

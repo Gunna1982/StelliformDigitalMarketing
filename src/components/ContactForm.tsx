@@ -60,7 +60,7 @@ export default function ContactForm() {
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 onFocus={() => setFocused('name')}
                 onBlur={() => setFocused(null)}
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-orange-500 focus:bg-orange-500/5 transition-all"
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-red-500 focus:bg-red-500/5 transition-all"
               />
             </motion.div>
             
@@ -77,7 +77,7 @@ export default function ContactForm() {
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 onFocus={() => setFocused('email')}
                 onBlur={() => setFocused(null)}
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-orange-500 focus:bg-orange-500/5 transition-all"
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-red-500 focus:bg-red-500/5 transition-all"
               />
             </motion.div>
           </div>
@@ -95,7 +95,7 @@ export default function ContactForm() {
               onChange={(e) => setFormData({ ...formData, project: e.target.value })}
               onFocus={() => setFocused('project')}
               onBlur={() => setFocused(null)}
-              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-orange-500 focus:bg-orange-500/5 transition-all"
+              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-red-500 focus:bg-red-500/5 transition-all"
             />
           </motion.div>
 
@@ -112,15 +112,15 @@ export default function ContactForm() {
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               onFocus={() => setFocused('message')}
               onBlur={() => setFocused(null)}
-              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-orange-500 focus:bg-orange-500/5 transition-all resize-none"
+              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-red-500 focus:bg-red-500/5 transition-all resize-none"
             />
           </motion.div>
 
           <motion.button
             type="submit"
-            whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(255, 165, 0, 0.4)" }}
+            whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(220, 38, 38, 0.4)" }}
             whileTap={{ scale: 0.98 }}
-            className="w-full py-4 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg font-semibold flex items-center justify-center gap-2"
+            className="w-full py-4 bg-gradient-to-r from-red-600 to-red-500 rounded-lg font-semibold flex items-center justify-center gap-2"
           >
             Start Conversation →
           </motion.button>

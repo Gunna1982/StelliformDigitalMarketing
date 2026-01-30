@@ -54,7 +54,7 @@ export default function Footer() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.1, borderColor: 'rgb(249, 115, 22)' }}
+                  whileHover={{ scale: 1.1, borderColor: 'rgb(239, 68, 68)' }}
                   className="w-10 h-10 border border-gray-800 rounded-lg flex items-center justify-center transition-colors"
                 >
                   <span className="text-sm">{social.icon[0].toUpperCase()}</span>
@@ -70,7 +70,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <div className="text-orange-400 text-xs font-bold mb-4 tracking-wider">MAP</div>
+            <div className="text-red-400 text-xs font-bold mb-4 tracking-wider">MAP</div>
             <div className="space-y-2 text-sm text-gray-400">
               {footerLinks.map.map((link, index) => (
                 <motion.a
@@ -80,7 +80,7 @@ export default function Footer() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  whileHover={{ x: 5, color: 'rgb(251, 146, 60)' }}
+                  whileHover={{ x: 5, color: 'rgb(248, 113, 113)' }}
                   className="block transition-all"
                 >
                   {link.label}
@@ -96,7 +96,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="text-orange-400 text-xs font-bold mb-4 tracking-wider">COMPANY</div>
+            <div className="text-red-400 text-xs font-bold mb-4 tracking-wider">COMPANY</div>
             <div className="space-y-2 text-sm text-gray-400">
               {footerLinks.company.map((link, index) => (
                 <motion.a
@@ -106,7 +106,7 @@ export default function Footer() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  whileHover={{ x: 5, color: 'rgb(251, 146, 60)' }}
+                  whileHover={{ x: 5, color: 'rgb(248, 113, 113)' }}
                   className="block transition-all"
                 >
                   {link.label}
@@ -122,7 +122,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <div className="text-orange-400 text-xs font-bold mb-4 tracking-wider">LEGAL</div>
+            <div className="text-red-400 text-xs font-bold mb-4 tracking-wider">LEGAL</div>
             <div className="space-y-2 text-sm text-gray-400">
               {footerLinks.legal.map((link, index) => (
                 <motion.a
@@ -132,7 +132,7 @@ export default function Footer() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  whileHover={{ x: 5, color: 'rgb(251, 146, 60)' }}
+                  whileHover={{ x: 5, color: 'rgb(248, 113, 113)' }}
                   className="block transition-all"
                 >
                   {link.label}
@@ -161,7 +161,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="text-right mt-8"
         >
-          <a href="#contact" className="text-sm hover:text-orange-400 transition inline-flex items-center gap-2">
+          <a href="#contact" className="text-sm hover:text-red-400 transition inline-flex items-center gap-2">
             Start Conversation →
           </a>
         </motion.div>

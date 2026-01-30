@@ -14,7 +14,7 @@ const projects = [
     image: '/projects/mcphillip.jpg', // You'll add actual images
     tags: ['Next.js', 'Google Ads', 'Lead Generation', 'CRM Integration'],
     link: '/case-study/mcphillip-firm',
-    color: 'from-orange-500 to-amber-500'
+    color: 'from-red-600 to-red-500'
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const projects = [
     image: '/projects/ach-tax.jpg',
     tags: ['PDF Generation', 'Automation', 'Custom Forms', 'Next.js'],
     link: '/case-study/ach-tax-services',
-    color: 'from-amber-500 to-yellow-500'
+    color: 'from-red-500 to-red-400'
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const projects = [
     image: '/projects/stelliform.jpg',
     tags: ['Three.js', 'Framer Motion', 'GSAP', 'React'],
     link: '/case-study/stelliform-digital',
-    color: 'from-yellow-500 to-orange-500'
+    color: 'from-red-400 to-red-600'
   }
 ];
 
@@ -55,7 +55,7 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="inline-block mb-4 px-4 py-2 border border-orange-500/30 rounded-full text-sm text-orange-400 bg-orange-500/5"
+          className="inline-block mb-4 px-4 py-2 border border-red-500/30 rounded-full text-sm text-red-400 bg-red-500/5"
         >
           Selected Work
         </motion.div>
@@ -81,7 +81,7 @@ export default function Portfolio() {
             className="relative group"
           >
             <a href={project.link} className="block">
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-white/10 hover:border-orange-500/50 transition-all duration-500">
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-white/10 hover:border-red-500/50 transition-all duration-500">
                 <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
                   {/* Left: Content */}
                   <div className="flex flex-col justify-center">
@@ -89,7 +89,7 @@ export default function Portfolio() {
                       animate={{ x: hoveredId === project.id ? 10 : 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="text-sm text-orange-400 mb-2 tracking-wider">
+                      <div className="text-sm text-red-400 mb-2 tracking-wider">
                         {String(project.id).padStart(2, '0')} / {project.category}
                       </div>
                       
@@ -114,7 +114,7 @@ export default function Portfolio() {
                       
                       <motion.div
                         animate={{ x: hoveredId === project.id ? 5 : 0 }}
-                        className="inline-flex items-center gap-2 text-orange-400 font-semibold"
+                        className="inline-flex items-center gap-2 text-red-400 font-semibold"
                       >
                         View Case Study →
                       </motion.div>
@@ -175,9 +175,9 @@ export default function Portfolio() {
         <p className="text-gray-400 mb-4">Interested in working together?</p>
         <motion.a
           href="#contact"
-          whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(255, 165, 0, 0.4)" }}
+          whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(220, 38, 38, 0.4)" }}
           whileTap={{ scale: 0.95 }}
-          className="inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg font-semibold"
+          className="inline-block px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 rounded-lg font-semibold"
         >
           Let&rsquo;s Build Something Amazing
         </motion.a>

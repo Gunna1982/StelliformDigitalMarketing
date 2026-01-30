@@ -40,7 +40,7 @@ export default function Navigation() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3 }}
-                className="hover:text-orange-400 transition-colors"
+                className="hover:text-red-400 transition-colors"
               >
                 {item}
               </motion.a>
@@ -57,13 +57,13 @@ export default function Navigation() {
             className="group relative px-6 py-2 rounded-lg font-semibold text-sm overflow-hidden"
           >
             {/* Animated gradient background */}
-            <span className="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500" />
+            <span className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-500" />
 
             {/* Shine effect on hover */}
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
 
             {/* Glow effect */}
-            <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-orange-400 to-amber-400 blur-lg -z-10" />
+            <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-red-500 to-red-400 blur-lg -z-10" />
 
             {/* Button text */}
             <span className="relative z-10 flex items-center gap-2 text-white">
