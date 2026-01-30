@@ -27,13 +27,11 @@ export default function Hero2() {
           100% { transform: translateY(-100vh) translateX(var(--drift)); opacity: 0; }
         }
 
-        /* Animation: The Volcano Flare (Fast Start, Decelerate) */
+        /* Animation: The Volcano Flare */
         @keyframes shoot-flare {
           0% { transform: translate(-50%, 100%) scale(0.2); opacity: 0; }
           5% { opacity: 1; transform: translate(-50%, 50%) scale(1); }
-          /* Explosion phase: Moves up very quickly initially */
           30% { transform: translate(-50%, -40vh) scale(1.4); opacity: 1; }
-          /* Drift phase: Slows down at top */
           100% { transform: translate(-50%, -120vh) scale(2); opacity: 0; }
         }
 
@@ -56,7 +54,6 @@ export default function Hero2() {
           mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
         }
         
-        /* Deep Red/Orange Sun Surface */
         .sun-surface {
           background: radial-gradient(circle at 50% 0%, 
             #ffffff 2%, 
@@ -70,21 +67,18 @@ export default function Hero2() {
           box-shadow: 0 -20px 100px rgba(220, 38, 38, 0.5);
         }
         
-        /* The Big "Volcano" Flare Effect */
         .mega-flare {
           position: absolute;
           bottom: -100px;
           left: 50%;
           width: 140px;
           height: 700px;
-          /* Deeper, hotter colors */
           background: linear-gradient(to top, #fff, #f87171, #dc2626, #7f1d1d, transparent);
           border-radius: 50%;
           filter: blur(24px);
           mix-blend-mode: screen;
           pointer-events: none;
           opacity: 0;
-          /* Modified to cubic-bezier(0.1, 1, 0.1, 1) for "Explosion" feel: Fast out, slow end */
           animation: shoot-flare 3.5s cubic-bezier(0.05, 0.9, 0.1, 1) forwards;
           animation-delay: 0.5s;
         }
@@ -121,11 +115,9 @@ export default function Hero2() {
           -webkit-text-fill-color: transparent;
         }
 
-        /* Faster Reveal */
         .reveal-content {
           opacity: 0;
           animation: blur-fade-in 1.2s ease-out forwards;
-          /* Originally 3.5s, now 2.1s (1.4s faster) */
           animation-delay: 2.1s; 
         }
       `}</style>
@@ -142,10 +134,10 @@ export default function Hero2() {
 
       {/* MAIN SOLAR SYSTEM */}
       <div className="fixed inset-0 z-0 pointer-events-none flex justify-center overflow-hidden">
-        {/* Sun Surface (Redder) */}
+        {/* Sun Surface */}
         <div className="sun-surface absolute -bottom-[350px] left-1/2 -translate-x-1/2 w-[250vw] h-[600px] rounded-[50%_50%_0_0] blur-[10px] z-0 opacity-90"></div>
         
-        {/* Glow Overlay (Red/Orange) */}
+        {/* Glow Overlay */}
         <div className="absolute -bottom-[200px] left-1/2 -translate-x-1/2 w-[120vw] h-[400px] rounded-[50%_50%_0_0] blur-[50px] mix-blend-screen z-10 bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,255,255,0.7)_0%,rgba(239,68,68,0.5)_20%,rgba(127,29,29,0)_70%)]"></div>
         
         <div className="solar-flare-container absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[120vh] z-20 overflow-hidden pointer-events-none">
@@ -155,39 +147,26 @@ export default function Hero2() {
           {/* THE EXPLOSION (Mega Flare) */}
           <div className="mega-flare z-30"></div>
 
-          {/* Floating Embers (White/Red) */}
-          <div className="ember absolute bottom-0 w-0.5 h-0.5 bg-white rounded-full animate-[rise_4s_linear_infinite]" style={{ left: '45%', '--drift': '-20px', animationDelay: '0s', opacity: 0.6 } as React.CSSProperties}></div>
-          <div className="ember absolute bottom-0 w-0.5 h-0.5 bg-red-200 rounded-full animate-[rise_3.5s_linear_infinite]" style={{ left: '55%', '--drift': '20px', animationDelay: '1.5s', opacity: 0.8 } as React.CSSProperties}></div>
-          <div className="ember absolute bottom-0 w-1 h-1 bg-white rounded-full animate-[rise_4s_linear_infinite]" style={{ left: '48%', '--drift': '-10px', animationDelay: '2.3s', opacity: 0.5 } as React.CSSProperties}></div>
-          <div className="ember absolute bottom-0 w-0.5 h-0.5 bg-orange-200 rounded-full animate-[rise_4.5s_linear_infinite]" style={{ left: '52%', '--drift': '15px', animationDelay: '3.1s', opacity: 0.7 } as React.CSSProperties}></div>
+          {/* Floating Embers (Orange-Red, Varied Sizes) */}
+          {/* Size 1: Small (w-0.5) */}
+          <div className="ember absolute bottom-0 w-0.5 h-0.5 bg-orange-500 rounded-full animate-[rise_4s_linear_infinite]" style={{ left: '45%', '--drift': '-20px', animationDelay: '0s', opacity: 0.8 } as React.CSSProperties}></div>
+          
+          {/* Size 2: Medium (w-1 - Standard) */}
+          <div className="ember absolute bottom-0 w-1 h-1 bg-red-500 rounded-full animate-[rise_3.5s_linear_infinite]" style={{ left: '55%', '--drift': '20px', animationDelay: '1.5s', opacity: 0.9 } as React.CSSProperties}></div>
+          
+          {/* Size 3: Largest (Max 1.5x larger than w-1, which is 4px -> 6px) */}
+          <div className="ember absolute bottom-0 w-[6px] h-[6px] bg-orange-600 rounded-full animate-[rise_5s_linear_infinite]" style={{ left: '48%', '--drift': '-10px', animationDelay: '2.3s', opacity: 0.7 } as React.CSSProperties}></div>
+          
+          {/* Size 2: Medium Variation */}
+          <div className="ember absolute bottom-0 w-1 h-1 bg-orange-400 rounded-full animate-[rise_4.5s_linear_infinite]" style={{ left: '52%', '--drift': '15px', animationDelay: '3.1s', opacity: 0.8 } as React.CSSProperties}></div>
+          
+          {/* Size 1: Small Variation */}
+          <div className="ember absolute bottom-0 w-0.5 h-0.5 bg-red-400 rounded-full animate-[rise_3.8s_linear_infinite]" style={{ left: '42%', '--drift': '-25px', animationDelay: '4s', opacity: 0.6 } as React.CSSProperties}></div>
+           
+           {/* Size 3: Largest Variation */}
+          <div className="ember absolute bottom-0 w-[5px] h-[5px] bg-red-600 rounded-full animate-[rise_4.2s_linear_infinite]" style={{ left: '58%', '--drift': '30px', animationDelay: '1s', opacity: 0.6 } as React.CSSProperties}></div>
         </div>
       </div>
-
-      {/* Navigation */}
-      <nav className="fixed top-0 inset-x-0 z-50 px-6 py-5">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="relative w-6 h-6 flex items-center justify-center">
-              <div className="absolute inset-0 bg-red-500 blur-sm opacity-60"></div>
-              {/* @ts-expect-error iconify-icon custom element */}
-              <iconify-icon icon="solar:stars-minimalistic-linear" class="text-red-400 relative z-10 text-xl"></iconify-icon>
-            </div>
-            <span className="text-sm font-semibold tracking-tight text-white">Stelliform</span>
-          </div>
-
-          <div className="hidden md:flex items-center gap-1 bg-white/5 border border-white/10 rounded-full px-1.5 py-1.5 backdrop-blur-md">
-            {['Product', 'Methodology', 'Pricing', 'Company'].map((item) => (
-              <a key={item} href="#" className={`px-3 py-1 text-xs font-medium rounded-full transition-colors ${item === 'Product' ? 'text-white bg-white/10 shadow-[0_0_10px_rgba(255,255,255,0.1)]' : 'text-neutral-400 hover:text-white'}`}>
-                {item}
-              </a>
-            ))}
-          </div>
-
-          <button className="bg-red-600 hover:bg-red-500 text-white text-xs font-semibold px-4 py-2 rounded-full transition-all shadow-[0_0_20px_-5px_rgba(220,38,38,0.5)] border border-red-500/50">
-            Get Started
-          </button>
-        </div>
-      </nav>
 
       {/* Hero Content */}
       <main className="relative z-10 flex-grow flex flex-col justify-center min-h-screen pt-10">
@@ -198,11 +177,11 @@ export default function Hero2() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md">
               {/* @ts-expect-error iconify-icon custom element */}
               <iconify-icon icon="solar:bolt-linear" class="text-red-400 text-sm"></iconify-icon>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-red-100">Social Growth Autopilot</span>
+              <span className="text-[10px] font-mono uppercase tracking-wider text-red-100">Powered By Artificial Intelligence</span>
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-white leading-[0.95] mb-6">
-              SOCIAL REACH <br />
+              INCREASE YOUR REACH <br />
               <span className="text-neutral-500">AUTOMATED.</span> <br />
               GROWTH VIRAL <br />
               <span className="text-gradient">RESULTS.</span>
@@ -297,7 +276,7 @@ export default function Hero2() {
               <div className="flex items-center gap-2 text-xs font-medium text-white">
                 {/* @ts-expect-error iconify-icon custom element */}
                 <iconify-icon icon="solar:bolt-linear" class="text-red-500 text-sm"></iconify-icon>
-                Luminous OS
+                Stelliform Digital 
               </div>
               <span className="text-neutral-600 text-xs">/</span>
               <span className="text-xs text-neutral-400">Growth</span>
@@ -320,7 +299,7 @@ export default function Hero2() {
               <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 hover:bg-white/5 text-xs text-neutral-400 hover:text-white transition-colors">
                 {/* @ts-expect-error iconify-icon custom element */}
                 <iconify-icon icon="solar:download-linear" class="text-sm"></iconify-icon>
-                Export
+                Free Consultation
               </button>
             </div>
 
