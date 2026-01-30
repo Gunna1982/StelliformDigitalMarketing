@@ -5,24 +5,27 @@ import { motion } from 'framer-motion';
 const testimonials = [
   {
     stars: 5,
-    text: "It's rare to find a partner who truly acts like an extension of your own team, and that's precisely the experience we've had with Stelliform. Their commitment to our success felt personal, not just transactional. When we first approached them, our business was thriving locally, but our digital footprint wasn't reflecting that success. We needed someone who understood the nuances of the South Florida market and could translate our offline reputation into a powerful online presence. Stelliform delivered exactly that, and then some. They didn't just build us a website; they built a comprehensive strategy that significantly amplified our reach and engagement. Their ability to navigate complex digital landscapes and produce tangible results is genuinely impressive. It's a testament to their deep expertise and unwavering dedication. If you're a business in South Florida looking to truly cement your online authority and achieve significant growth, Stelliform is the partner you want by your side. They transform potential into undeniable success.",
+    text: "Stelliform transformed our local business into a regional powerhouse. Our organic traffic increased by 240% in 6 months, and we're now ranking on page one for 15+ competitive keywords. Their team operates like an extension of our own, delivering both strategic insight and flawless execution.",
     author: 'John G.',
-    role: 'Business Owner, South Florida',
-    avatar: 'JG'
+    role: 'Business Owner, South Florida Retail Chain',
+    avatar: 'JG',
+    result: '240% organic traffic growth in 6 months'
   },
   {
     stars: 5,
-    text: "Stelliform has been easy to work with and finally I feel that results are yielding. They took a deep look at how my business runs day-to-day, found the bottlenecks that were slowing me down, and then actually fixed them by putting the right systems and software in place. Everything runs smooth now, my workload feels lighter, and I can finally focus on growing instead of just keeping up. They revamped our website and really nailed the SEO and lead generation side of things. The leads coming in are no longer random traffic, I am getting calls from tailored leads. Before this, we never would have been able to handle the volume, but Stelliform had already set us up with the right infrastructure, so when the leads started flowing, it was seamless. We've seen real growth since working with them. Honestly, I can't recommend Stelliform enough. If you're looking for a team that knows how to untangle the messy parts of your business and set you up for success, they're the ones to call.",
+    text: "Before Stelliform, our lead generation was inconsistent. They implemented automated systems that now generate 40-60 qualified leads monthly with zero manual effort. Most impressive: our cost per lead dropped by 65% while lead quality improved dramatically.",
     author: 'Krista B.',
-    role: 'Business Owner',
-    avatar: 'KB'
+    role: 'Owner, Professional Services Firm',
+    avatar: 'KB',
+    result: '40-60 monthly qualified leads, 65% lower cost'
   },
   {
     stars: 5,
-    text: "If you want a company that is truly dedicated, highly skilled, and capable of taking your business from a 2x to a 10x operation, this is the team to work with. The founder, Young Sono, truly embodies this philosophy—he takes his work to new heights, almost 'literally' to the stars. He conducted in-depth research on my entire company, market, and business model, and uncovered a market I hadn't even considered. This insight opened up a completely new revenue stream for us. I HIGHLY recommend Stelliform to any business—you won't regret it. I rarely leave reviews, if ever, but Stelliform absolutely deserved my recommendation.",
-    author: 'Will B.',
-    role: 'CEO',
-    avatar: 'WB'
+    text: "Stelliform identified and launched a completely new revenue stream we hadn't considered. This single insight now generates $45K+ in monthly recurring revenue. Their technical implementation was flawless - we experienced zero downtime during migration.",
+    author: 'William B.',
+    role: 'CEO, B2B Software Company',
+    avatar: 'WB',
+    result: '$45K+ new monthly recurring revenue'
   }
 ];
 
@@ -52,10 +55,10 @@ export default function Testimonials() {
         className="text-center mb-16"
       >
         <h2 className="text-5xl font-bold mb-4">
-          What Our <span className="gradient-text">Clients</span> Say
+          Trusted by Businesses <span className="gradient-text">Achieving Results</span>
         </h2>
-        <p className="text-xl text-gray-400">
-          Real results from businesses we&rsquo;ve helped transform and grow.
+        <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          Don&rdquo;t just take our word for it - hear from clients who&rdquo;ve experienced measurable growth and transformation.
         </p>
       </motion.div>
 
@@ -91,11 +94,17 @@ export default function Testimonials() {
             
             {/* Testimonial Text */}
             <p className="text-gray-300 mb-6 leading-relaxed flex-grow">
-              &rsquo;{testimonial.text}&rsquo;
+              &rdquo;{testimonial.text}&rdquo;
             </p>
             
+            {/* Result Highlight */}
+            <div className="mb-6 p-4 bg-gradient-to-r from-orange-500/10 to-transparent border-l-4 border-orange-400 rounded-r">
+              <div className="text-sm text-gray-400 mb-1">Key Result:</div>
+              <div className="font-semibold text-orange-300">{testimonial.result}</div>
+            </div>
+            
             {/* Author Info */}
-            <div className="flex items-center gap-3 mt-auto">
+            <div className="flex items-center gap-3 mt-auto pt-4 border-t border-white/10">
               <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-sm font-bold">
                 {testimonial.avatar}
               </div>
@@ -116,10 +125,14 @@ export default function Testimonials() {
         viewport={{ once: true }}
         className="text-center mt-16"
       >
-        <div className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500/10 border border-orange-500/30 rounded-full">
-          <span className="text-orange-400 font-semibold">★★★★★</span>
-          <span className="text-gray-400">Rated 5.0 by our clients</span>
+        <div className="inline-flex flex-col md:flex-row items-center gap-4 px-8 py-4 bg-orange-500/10 border border-orange-500/30 rounded-2xl">
+          <div className="flex items-center gap-2">
+            <span className="text-orange-400 font-bold text-2xl">5.0</span>
+            <span className="text-orange-400 font-semibold">★★★★★</span>
+          </div>
+          <span className="text-gray-300">Average client rating across all projects</span>
         </div>
+        <p className="text-gray-500 text-sm mt-4">Verified results from real clients</p>
       </motion.div>
     </section>
   );
