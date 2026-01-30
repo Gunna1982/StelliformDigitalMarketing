@@ -1,47 +1,28 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useRef } from 'react';
 
 const testimonials = [
   {
     stars: 5,
-    text: "This platform completely changed how we approach design systems. The speed and consistency we've achieved is mind-blowing. It's the standard we've been looking for.",
-    author: 'Sarah Jenkins',
-    role: 'Product Designer at Stripe',
-    avatar: 'SJ'
-  },
-  {
-    quote: true,
-    text: "I've used every UI kit out there. Nothing comes close to the polish and flexibility of this one. It's not just a library, it's a design education.",
-    author: 'Michael Chen',
-    role: 'CTO at Vercel',
-    avatar: 'MC'
+    text: "It's rare to find a partner who truly acts like an extension of your own team, and that's precisely the experience we've had with Stelliform. Their commitment to our success felt personal, not just transactional. When we first approached them, our business was thriving locally, but our digital footprint wasn't reflecting that success. We needed someone who understood the nuances of the South Florida market and could translate our offline reputation into a powerful online presence. Stelliform delivered exactly that, and then some. They didn't just build us a website; they built a comprehensive strategy that significantly amplified our reach and engagement. Their ability to navigate complex digital landscapes and produce tangible results is genuinely impressive. It's a testament to their deep expertise and unwavering dedication. If you're a business in South Florida looking to truly cement your online authority and achieve significant growth, Stelliform is the partner you want by your side. They transform potential into undeniable success.",
+    author: 'John G.',
+    role: 'Business Owner, South Florida',
+    avatar: 'JG'
   },
   {
     stars: 5,
-    text: "We redesigned our entire SaaS dashboard in a weekend. The components are not just beautiful, they're robust and accessible.",
-    author: 'David Kim',
-    role: 'Founder at Slack',
-    avatar: 'DK'
+    text: "Stelliform has been easy to work with and finally I feel that results are yielding. They took a deep look at how my business runs day-to-day, found the bottlenecks that were slowing me down, and then actually fixed them by putting the right systems and software in place. Everything runs smooth now, my workload feels lighter, and I can finally focus on growing instead of just keeping up. They revamped our website and really nailed the SEO and lead generation side of things. The leads coming in are no longer random traffic, I am getting calls from tailored leads. Before this, we never would have been able to handle the volume, but Stelliform had already set us up with the right infrastructure, so when the leads started flowing, it was seamless. We've seen real growth since working with them. Honestly, I can't recommend Stelliform enough. If you're looking for a team that knows how to untangle the messy parts of your business and set you up for success, they're the ones to call.",
+    author: 'Krista B.',
+    role: 'Business Owner',
+    avatar: 'KB'
   },
   {
-    tweet: true,
-    author: 'James Doe',
-    text: "Just shipped my portfolio using the new components. The attention to detail is insane. 🚀",
-    avatar: 'JD'
-  },
-  {
-    text: "Finally, a tool that bridges the gap between design and code perfectly. Our developer handoff time has been cut in half.",
-    author: 'Anna K.',
-    role: 'Director of Product',
-    avatar: 'AK'
-  },
-  {
-    text: "Best investment we made for our design team this year. The ROI was immediate and the support is fantastic.",
-    author: 'Anna K.',
-    role: 'Director of Product',
-    avatar: 'AK'
+    stars: 5,
+    text: "If you want a company that is truly dedicated, highly skilled, and capable of taking your business from a 2x to a 10x operation, this is the team to work with. The founder, Young Sono, truly embodies this philosophy—he takes his work to new heights, almost 'literally' to the stars. He conducted in-depth research on my entire company, market, and business model, and uncovered a market I hadn't even considered. This insight opened up a completely new revenue stream for us. I HIGHLY recommend Stelliform to any business—you won't regret it. I rarely leave reviews, if ever, but Stelliform absolutely deserved my recommendation.",
+    author: 'Will B.',
+    role: 'CEO',
+    avatar: 'WB'
   }
 ];
 
@@ -50,7 +31,7 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1
+      staggerChildren: 0.2
     }
   }
 };
@@ -71,10 +52,10 @@ export default function Testimonials() {
         className="text-center mb-16"
       >
         <h2 className="text-5xl font-bold mb-4">
-          Loved by <span className="text-gray-500">passionate</span> builders
+          What Our <span className="gradient-text">Clients</span> Say
         </h2>
         <p className="text-xl text-gray-400">
-          Join thousands of developers and designers who rely on our tools to ship better products, faster.
+          Real results from businesses we&rsquo;ve helped transform and grow.
         </p>
       </motion.div>
 
@@ -90,62 +71,55 @@ export default function Testimonials() {
             key={index}
             variants={item}
             whileHover={{ y: -5, borderColor: 'rgba(255, 165, 0, 0.3)' }}
-            className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 transition-all duration-300"
+            className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 transition-all duration-300 flex flex-col"
           >
-            {testimonial.stars && (
-              <div className="flex mb-3">
-                {[...Array(testimonial.stars)].map((_, i) => (
-                  <motion.span
-                    key={i}
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: i * 0.1 }}
-                    viewport={{ once: true }}
-                    className="text-orange-400"
-                  >
-                    ★
-                  </motion.span>
-                ))}
+            {/* Star Rating */}
+            <div className="flex mb-4">
+              {[...Array(testimonial.stars)].map((_, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="text-orange-400 text-xl"
+                >
+                  ★
+                </motion.span>
+              ))}
+            </div>
+            
+            {/* Testimonial Text */}
+            <p className="text-gray-300 mb-6 leading-relaxed flex-grow">
+              &rsquo;{testimonial.text}&rsquo;
+            </p>
+            
+            {/* Author Info */}
+            <div className="flex items-center gap-3 mt-auto">
+              <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-sm font-bold">
+                {testimonial.avatar}
               </div>
-            )}
-            
-            {testimonial.quote && (
-              <div className="text-6xl text-gray-700 mb-4"></div>
-            )}
-            
-            {testimonial.tweet && (
-              <div className="bg-gray-900 rounded-lg p-4 mb-6">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-xs font-bold">
-                    {testimonial.avatar}
-                  </div>
-                  <div className="font-semibold text-sm">{testimonial.author}</div>
-                  <div className="text-orange-400 text-xs">✦</div>
-                </div>
-                <p className="text-sm text-gray-400">{testimonial.text}</p>
+              <div>
+                <div className="font-semibold">{testimonial.author}</div>
+                <div className="text-sm text-gray-500">{testimonial.role}</div>
               </div>
-            )}
-            
-            {!testimonial.tweet && (
-              <>
-                <p className="text-gray-300 mb-6">{testimonial.text}</p>
-                <div className="flex items-center gap-3">
-                  <div className={`w-12 h-12 bg-gradient-to-br ${
-                    testimonial.avatar === 'AK' ? 'from-green-400 to-green-600' : 'from-orange-400 to-orange-600'
-                  } rounded-full flex items-center justify-center text-sm font-bold`}>
-                    {testimonial.avatar}
-                  </div>
-                  <div>
-                    <div className="font-semibold">{testimonial.author}</div>
-                    {testimonial.role && (
-                      <div className="text-sm text-gray-500">{testimonial.role}</div>
-                    )}
-                  </div>
-                </div>
-              </>
-            )}
+            </div>
           </motion.div>
         ))}
+      </motion.div>
+
+      {/* Trust Badge */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        viewport={{ once: true }}
+        className="text-center mt-16"
+      >
+        <div className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500/10 border border-orange-500/30 rounded-full">
+          <span className="text-orange-400 font-semibold">★★★★★</span>
+          <span className="text-gray-400">Rated 5.0 by our clients</span>
+        </div>
       </motion.div>
     </section>
   );
