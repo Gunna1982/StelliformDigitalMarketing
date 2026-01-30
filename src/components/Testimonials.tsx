@@ -15,7 +15,7 @@ const testimonials = [
     stars: 5,
     text: "Before Stelliform, our lead generation was inconsistent. They implemented automated systems that now generate 40-60 qualified leads monthly with zero manual effort. Most impressive: our cost per lead dropped by 65% while lead quality improved dramatically.",
     author: 'Krista B.',
-    role: 'Owner, Professional Services Firm',
+    role: 'Owner, Special Needs Educational Consulting Firm',
     avatar: 'KB',
     result: '40-60 monthly qualified leads, 65% lower cost'
   },
