@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -25,25 +26,45 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-12">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-xl font-bold gradient-text cursor-pointer"
-          >
-            Stelliformdigital
-          </motion.div>
+          <Link href="/">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="text-xl font-bold gradient-text cursor-pointer"
+            >
+              Stelliformdigital
+            </motion.div>
+          </Link>
 
           <div className="hidden md:flex items-center gap-8 text-sm">
-            {['Portfolio', 'Services', 'About', 'Blog', 'Contact'].map((item, index) => (
-              <motion.a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+            {[
+              { name: 'Work', href: '#work' },
+              { name: 'Services', href: '#services' },
+              { name: 'Blog', href: '/blog' },
+              { name: 'About', href: '#about' },
+              { name: 'Contact', href: '#contact' }
+            ].map((item, index) => (
+              <motion.div
+                key={item.name}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3 }}
-                className="hover:text-red-400 transition-colors"
               >
-                {item}
-              </motion.a>
+                {item.href.startsWith('#') ? (
+                  <a
+                    href={item.href}
+                    className="hover:text-red-400 transition-colors"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="hover:text-red-400 transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </motion.div>
             ))}
           </div>
         </div>
