@@ -33,7 +33,7 @@ export default function Navigation() {
           </motion.div>
 
           <div className="hidden md:flex items-center gap-8 text-sm">
-            {['Work', 'Services', 'About', 'Contact'].map((item, index) => (
+            {['Portfolio', 'Services', 'About', 'Blog', 'Contact'].map((item, index) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}

@@ -156,21 +156,21 @@ export default function Hero2() {
             {/* Floating Embers: Adjusted to be redder and slower */}
             
             {/* Left (Slower, ~5s - 6s) */}
-            <div className="ember absolute bottom-0 w-0.5 h-0.5 bg-red-800 rounded-full animate-[rise_6s_linear_infinite]" style={{ left: '42%', '--drift': '-20px', animationDelay: '0s', opacity: 0.6 } as any}></div>
-            <div className="ember absolute bottom-0 w-1 h-1 bg-red-600 rounded-full animate-[rise_5.5s_linear_infinite]" style={{ left: '45%', '--drift': '-10px', animationDelay: '1.5s', opacity: 0.7 } as any}></div>
+            <div className="ember absolute bottom-0 w-0.5 h-0.5 bg-red-800 rounded-full animate-[rise_6s_linear_infinite]" style={{ left: '42%', '--drift': '-20px', animationDelay: '0s', opacity: 0.6 } as React.CSSProperties}></div>
+            <div className="ember absolute bottom-0 w-1 h-1 bg-red-600 rounded-full animate-[rise_5.5s_linear_infinite]" style={{ left: '45%', '--drift': '-10px', animationDelay: '1.5s', opacity: 0.7 } as React.CSSProperties}></div>
             
             {/* Middle (Medium, ~4.5s - 5s) */}
-            <div className="ember absolute bottom-0 w-[12px] h-[12px] bg-red-500/80 rounded-full animate-[rise_5s_linear_infinite]" style={{ left: '48%', '--drift': '5px', animationDelay: '2.3s', opacity: 0.5 } as any}></div>
-            <div className="ember absolute bottom-0 w-2 h-2 bg-red-200 rounded-full animate-[rise_4.8s_linear_infinite] shadow-[0_0_8px_rgba(239,68,68,0.4)]" style={{ left: '50%', '--drift': '0px', animationDelay: '0.5s', opacity: 0.6 } as any}></div> 
+            <div className="ember absolute bottom-0 w-[12px] h-[12px] bg-red-500/80 rounded-full animate-[rise_5s_linear_infinite]" style={{ left: '48%', '--drift': '5px', animationDelay: '2.3s', opacity: 0.5 } as React.CSSProperties}></div>
+            <div className="ember absolute bottom-0 w-2 h-2 bg-red-200 rounded-full animate-[rise_4.8s_linear_infinite] shadow-[0_0_8px_rgba(239,68,68,0.4)]" style={{ left: '50%', '--drift': '0px', animationDelay: '0.5s', opacity: 0.6 } as React.CSSProperties}></div> 
             
             {/* Middle-Right (~4s - 4.5s) */}
-            <div className="ember absolute bottom-0 w-[4px] h-[4px] bg-red-400 rounded-full animate-[rise_4.5s_linear_infinite]" style={{ left: '52%', '--drift': '15px', animationDelay: '3.1s', opacity: 0.8 } as any}></div>
-            <div className="ember absolute bottom-0 w-1 h-1 bg-red-300 rounded-full animate-[rise_4.2s_linear_infinite]" style={{ left: '54%', '--drift': '20px', animationDelay: '1s', opacity: 0.9 } as any}></div>
+            <div className="ember absolute bottom-0 w-[4px] h-[4px] bg-red-400 rounded-full animate-[rise_4.5s_linear_infinite]" style={{ left: '52%', '--drift': '15px', animationDelay: '3.1s', opacity: 0.8 } as React.CSSProperties}></div>
+            <div className="ember absolute bottom-0 w-1 h-1 bg-red-300 rounded-full animate-[rise_4.2s_linear_infinite]" style={{ left: '54%', '--drift': '20px', animationDelay: '1s', opacity: 0.9 } as React.CSSProperties}></div>
 
             {/* Far Right (Was fastest, now slowed to ~3.5s - 4s) */}
-            <div className="ember absolute bottom-0 w-[6px] h-[6px] bg-red-500 rounded-full animate-[rise_3.8s_linear_infinite]" style={{ left: '56%', '--drift': '30px', animationDelay: '0.2s', opacity: 0.7 } as any}></div>
-            <div className="ember absolute bottom-0 w-1.5 h-1.5 bg-red-100 rounded-full animate-[rise_3.5s_linear_infinite]" style={{ left: '58%', '--drift': '40px', animationDelay: '1.8s', opacity: 0.8 } as any}></div> 
-            <div className="ember absolute bottom-0 w-1 h-1 bg-red-400 rounded-full animate-[rise_4s_linear_infinite]" style={{ left: '60%', '--drift': '25px', animationDelay: '2.8s', opacity: 0.6 } as any}></div>
+            <div className="ember absolute bottom-0 w-[6px] h-[6px] bg-red-500 rounded-full animate-[rise_3.8s_linear_infinite]" style={{ left: '56%', '--drift': '30px', animationDelay: '0.2s', opacity: 0.7 } as React.CSSProperties}></div>
+            <div className="ember absolute bottom-0 w-1.5 h-1.5 bg-red-100 rounded-full animate-[rise_3.5s_linear_infinite]" style={{ left: '58%', '--drift': '40px', animationDelay: '1.8s', opacity: 0.8 } as React.CSSProperties}></div> 
+            <div className="ember absolute bottom-0 w-1 h-1 bg-red-400 rounded-full animate-[rise_4s_linear_infinite]" style={{ left: '60%', '--drift': '25px', animationDelay: '2.8s', opacity: 0.6 } as React.CSSProperties}></div>
 
           </div>
         </div>
