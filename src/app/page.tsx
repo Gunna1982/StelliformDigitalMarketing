@@ -11,6 +11,7 @@ import PageLoader from '@/components/PageLoader';
 import ParticlesBackground from '@/components/ParticlesBackground';
 import LogoCarouselParticles from '@/components/LogoCarousel3D';
 import Hero2 from '@/components/Hero2';
+import ExitIntentPopup from '@/components/ExitIntentPopup';
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
         <ContactForm />
       </main>
       <Footer />
+      <ExitIntentPopup />
     </>
   );
 }

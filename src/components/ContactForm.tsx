@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
+type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
@@ -12,11 +14,33 @@ export default function ContactForm() {
   });
 
   const [focused, setFocused] = useState<string | null>(null);
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add your form submission logic here
+    setSubmitStatus('submitting');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || 'Failed to submit form');
+      }
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', project: '', message: '' });
+    } catch (error) {
+      setSubmitStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Something went wrong');
+    }
   };
 
   return (
@@ -56,6 +80,7 @@ export default function ContactForm() {
               <input
                 type="text"
                 placeholder="NAME"
+                required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 onFocus={() => setFocused('name')}
@@ -73,6 +98,7 @@ export default function ContactForm() {
               <input
                 type="email"
                 placeholder="EMAIL"
+                required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 onFocus={() => setFocused('email')}
@@ -116,14 +142,38 @@ export default function ContactForm() {
             />
           </motion.div>
 
-          <motion.button
-            type="submit"
-            whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(220, 38, 38, 0.4)" }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full py-4 bg-gradient-to-r from-red-600 to-red-500 rounded-lg font-semibold flex items-center justify-center gap-2"
-          >
-            Start Conversation →
-          </motion.button>
+          {submitStatus === 'success' ? (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="w-full py-4 bg-green-600/20 border border-green-500/30 rounded-lg text-green-400 text-center"
+            >
+              Thanks! We&rsquo;ll be in touch soon.
+            </motion.div>
+          ) : (
+            <>
+              {submitStatus === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-red-400 text-sm text-center"
+                >
+                  {errorMessage}
+                </motion.div>
+              )}
+              <motion.button
+                type="submit"
+                disabled={submitStatus === 'submitting'}
+                whileHover={submitStatus !== 'submitting' ? { scale: 1.02, boxShadow: "0 10px 30px rgba(220, 38, 38, 0.4)" } : {}}
+                whileTap={submitStatus !== 'submitting' ? { scale: 0.98 } : {}}
+                className={`w-full py-4 bg-gradient-to-r from-red-600 to-red-500 rounded-lg font-semibold flex items-center justify-center gap-2 ${
+                  submitStatus === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''
+                }`}
+              >
+                {submitStatus === 'submitting' ? 'Sending...' : 'Start Conversation →'}
+              </motion.button>
+            </>
+          )}
         </motion.form>
       </div>
     </section>

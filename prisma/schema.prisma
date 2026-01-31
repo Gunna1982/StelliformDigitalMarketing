@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Contact Info
+  name      String
+  email     String
+  project   String?
+  message   String?
+
+  // Attribution
+  source    String?   @default("website")
+  medium    String?   @default("contact_form")
+  campaign  String?
+  referrer  String?
+  landingPage String?
+
+  // Meta
+  userAgent String?
+  ip        String?
+
+  // Status tracking
+  status    String    @default("new")
+  notifiedAt DateTime?
+
+  @@index([email])
+  @@index([createdAt])
+  @@index([status])
+}
