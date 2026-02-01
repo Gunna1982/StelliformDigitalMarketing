@@ -70,8 +70,8 @@ export default function Hero2() {
             position: absolute;
             bottom: -100px;
             left: 50%;
-            width: 140px;
-            height: 700px;
+            width: 105px;
+            height: 525px;
             background: linear-gradient(to top, #fff, #f87171, #dc2626, #7f1d1d, transparent);
             border-radius: 50%;
             filter: blur(24px);
@@ -140,15 +140,15 @@ export default function Hero2() {
 
         {/* MAIN SOLAR SYSTEM */}
         <div className="fixed inset-0 z-0 pointer-events-none flex justify-center overflow-hidden">
-          {/* Sun Surface */}
-          <div className="sun-surface absolute -bottom-[350px] left-1/2 -translate-x-1/2 w-[250vw] h-[600px] rounded-[50%_50%_0_0] blur-[10px] z-0 opacity-90"></div>
+          {/* Sun Surface - Reduced by 25% */}
+          <div className="sun-surface absolute -bottom-[350px] left-1/2 -translate-x-1/2 w-[187.5vw] h-[450px] rounded-[50%_50%_0_0] blur-[10px] z-0 opacity-90"></div>
           
-          {/* Glow Overlay */}
-          <div className="absolute -bottom-[200px] left-1/2 -translate-x-1/2 w-[120vw] h-[400px] rounded-[50%_50%_0_0] blur-[50px] mix-blend-screen z-10 bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,255,255,0.7)_0%,rgba(239,68,68,0.5)_20%,rgba(127,29,29,0)_70%)]"></div>
+          {/* Glow Overlay - Reduced by 25% */}
+          <div className="absolute -bottom-[200px] left-1/2 -translate-x-1/2 w-[90vw] h-[300px] rounded-[50%_50%_0_0] blur-[50px] mix-blend-screen z-10 bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,255,255,0.7)_0%,rgba(239,68,68,0.5)_20%,rgba(127,29,29,0)_70%)]"></div>
           
-          <div className="solar-flare-container absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[120vh] z-20 overflow-hidden pointer-events-none">
-            {/* Main vertical plasma beam */}
-            <div className="solar-flare-beam absolute bottom-0 left-1/2 -translate-x-1/2 w-28 h-full z-10"></div>
+          <div className="solar-flare-container absolute bottom-0 left-1/2 -translate-x-1/2 w-[300px] h-[120vh] z-20 overflow-hidden pointer-events-none">
+            {/* Main vertical plasma beam - Reduced by 25% */}
+            <div className="solar-flare-beam absolute bottom-0 left-1/2 -translate-x-1/2 w-21 h-full z-10"></div>
             
             {/* THE EXPLOSION (Mega Flare) */}
             <div className="mega-flare z-30"></div>
@@ -216,7 +216,7 @@ export default function Hero2() {
                   </a>
                 </div>
                 <p className="text-xs text-neutral-500 ml-1">
-                  30-min strategy session • Discover what&rsquo;s costing you leads • No obligation
+                  30-min strategy session • Discover what&apos;s costing you leads • No obligation
                 </p>
               </div>
             </div>
