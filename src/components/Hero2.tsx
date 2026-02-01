@@ -184,27 +184,40 @@ export default function Hero2() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md">
                 {/* @ts-expect-error iconify-icon custom element */}
                 <iconify-icon icon="solar:bolt-linear" class="text-red-400 text-sm"></iconify-icon>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-red-100">Social Growth Autopilot</span>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-red-100">Data-Driven Growth Marketing</span>
               </div>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-white leading-[0.95] mb-6">
-                SOCIAL REACH <br />
-                <span className="text-neutral-500">AUTOMATED.</span> <br />
-                GROWTH VIRAL <br />
+                MARKETING THAT <br />
+                <span className="text-neutral-500">DELIVERS</span> <br />
+                MEASURABLE <br />
                 <span className="text-gradient">RESULTS.</span>
               </h1>
 
-              <p className="text-neutral-400 text-sm leading-relaxed max-w-md mb-8">
-                Stop guessing what works. Stelliform analyzes trends and automates your content strategy for interstellar engagement velocity across every vector.
+              <p className="text-neutral-400 text-base leading-relaxed max-w-md mb-8">
+                Stop wasting budget on guesswork. We build data-driven marketing systems that deliver measurable ROI and sustainable growth for your business.
               </p>
 
-              <div className="flex items-center gap-4 reveal-content">
-                <button className="h-10 px-6 rounded-full bg-gradient-to-b from-red-500 to-red-700 text-white text-sm font-medium shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)] hover:scale-105 transition-all border border-red-400/50">
-                  Explore Design
-                </button>
-                <button className="h-10 px-6 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-colors">
-                  View Features
-                </button>
+              {/* Updated CTAs */}
+              <div className="flex flex-col items-start gap-3 reveal-content">
+                <div className="flex items-center gap-4 flex-wrap">
+                  <a 
+                    href="#contact"
+                    className="h-12 px-8 rounded-full bg-gradient-to-b from-red-500 to-red-700 text-white text-sm font-semibold shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)] hover:scale-105 transition-all border border-red-400/50 flex items-center justify-center"
+                  >
+                    Get Your Free Marketing Audit
+                  </a>
+                  <a 
+                    href="#work"
+                    className="h-12 px-8 rounded-full bg-white/5 backdrop-blur-md border border-white/20 text-white text-sm font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+                  >
+                    View Case Studies
+                    <span>→</span>
+                  </a>
+                </div>
+                <p className="text-xs text-neutral-500 ml-1">
+                  30-min strategy session • Discover what&rsquo;s costing you leads • No obligation
+                </p>
               </div>
             </div>
 
@@ -218,20 +231,20 @@ export default function Hero2() {
                   {/* Top Label */}
                   <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-white/5 border border-white/5 mb-6">
                     <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-                    <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wide">Viral Result</span>
+                    <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wide">Live Results</span>
                   </div>
 
                   {/* Content */}
                   <h3 className="text-lg font-medium text-white mb-1">Growth Velocity</h3>
-                  <p className="text-xs text-neutral-500 mb-6">Automated engagement hitting viral peaks.</p>
+                  <p className="text-xs text-neutral-500 mb-6">Real client results, real impact.</p>
 
                   {/* Big Stat */}
                   <div className="flex items-end gap-3 mb-6">
-                    <span className="text-5xl font-light text-white tracking-tighter">+842%</span>
+                    <span className="text-5xl font-light text-white tracking-tighter">+240%</span>
                     <div className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-red-900/30 border border-red-500/20 text-[10px] font-medium text-red-400 mb-2">
                       {/* @ts-expect-error iconify-icon custom element */}
                       <iconify-icon icon="solar:arrow-right-up-linear" class="text-xs"></iconify-icon>
-                      vs last week
+                      organic traffic
                     </div>
                   </div>
 
@@ -250,23 +263,26 @@ export default function Hero2() {
                     </svg>
                   </div>
 
-                  <button className="w-full h-10 rounded-xl bg-gradient-to-r from-red-600 to-red-500 text-white text-xs font-semibold shadow-lg shadow-red-900/20 hover:shadow-red-900/40 transition-all border-t border-white/20">
-                    Analyze Trends
-                  </button>
+                  <a 
+                    href="#work"
+                    className="w-full h-10 rounded-xl bg-gradient-to-r from-red-600 to-red-500 text-white text-xs font-semibold shadow-lg shadow-red-900/20 hover:shadow-red-900/40 transition-all border-t border-white/20 flex items-center justify-center"
+                  >
+                    View Full Case Study
+                  </a>
 
                   <div className="mt-6 pt-6 border-t border-white/5 flex items-center justify-between text-[10px] text-neutral-500">
                     <div className="flex items-center gap-2">
                       {/* @ts-expect-error iconify-icon custom element */}
-                      <iconify-icon icon="solar:eye-linear" class="text-sm"></iconify-icon>
-                      Total Impressions
+                      <iconify-icon icon="solar:users-group-rounded-linear" class="text-sm"></iconify-icon>
+                      Qualified Leads
                     </div>
-                    <span className="text-white font-mono">2.4M</span>
+                    <span className="text-white font-mono">+180%</span>
                   </div>
 
                   <div className="mt-2 flex items-center gap-2 text-[10px] text-neutral-600">
                     {/* @ts-expect-error iconify-icon custom element */}
-                    <iconify-icon icon="solar:magic-stick-3-linear" class="text-sm"></iconify-icon>
-                    Auto-Optimization Active
+                    <iconify-icon icon="solar:dollar-linear" class="text-sm"></iconify-icon>
+                    Average 5:1 Marketing ROI
                   </div>
                 </div>
               </div>
@@ -286,11 +302,11 @@ export default function Hero2() {
                   Stelliform Digital
                 </div>
                 <span className="text-neutral-600 text-xs">/</span>
-                <span className="text-xs text-neutral-400">Growth</span>
+                <span className="text-xs text-neutral-400">Growth Marketing</span>
                 
                 <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-red-500/10 border border-red-500/20 ml-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
-                  <span className="text-[10px] text-red-400 font-mono uppercase">Live</span>
+                  <span className="text-[10px] text-red-400 font-mono uppercase">Accepting Clients</span>
                 </div>
               </div>
 
@@ -299,15 +315,18 @@ export default function Hero2() {
                   {/* @ts-expect-error iconify-icon custom element */}
                   <iconify-icon icon="solar:magnifer-linear" class="text-sm"></iconify-icon>
                 </div>
-                <input type="text" placeholder="Search trends..." className="w-full bg-black/20 border border-white/10 rounded-lg py-1.5 pl-9 pr-3 text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-white/20 focus:bg-white/5 transition-all" />
+                <input type="text" placeholder="Search services..." className="w-full bg-black/20 border border-white/10 rounded-lg py-1.5 pl-9 pr-3 text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-white/20 focus:bg-white/5 transition-all" />
               </div>
 
               <div className="flex items-center gap-3">
-                <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 text-white text-xs font-medium shadow-md shadow-red-900/30 hover:bg-red-500 transition-all">
-                  Start Your Growth
+                <a 
+                  href="#contact"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 text-white text-xs font-medium shadow-md shadow-red-900/30 hover:bg-red-500 transition-all"
+                >
+                  Book Strategy Call
                   {/* @ts-expect-error iconify-icon custom element */}
                   <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
-                </button>
+                </a>
               </div>
             </div>
           </div>
