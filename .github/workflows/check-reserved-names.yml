@@ -1,0 +1,44 @@
+name: Check Reserved Windows Filenames
+
+on:
+  pull_request:
+    branches: ["**"]
+  push:
+    branches: ["**"]
+  workflow_dispatch: {}
+
+jobs:
+  check-files:
+    name: Check tracked files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Run reserved-name check
+        run: |
+          node scripts/check-reserved-names.js --all
+
+  history-scan:
+    name: Optional history scan (pushes to main or manual)
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Run history scan
+        run: |
+          node scripts/check-reserved-names.js --history
