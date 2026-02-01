@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# Pre-commit hook: prevent reserved Windows device names from being committed
+# This hook expects Node.js to be available on PATH.
+node scripts/check-reserved-names.js --staged || {
+  echo "Commit aborted: reserved Windows filename found. See output above." >&2
+  exit 1
+}
+exit 0
