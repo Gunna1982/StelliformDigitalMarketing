@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import Navigation from './Navigation';
-import Image from 'next/image';
+import Footer from './Footer';
 
 interface BlogPost {
   id: number;
@@ -172,23 +171,21 @@ export default function BlogContent() {
           <div className="absolute -bottom-8 left-20 w-96 h-96 bg-red-700 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
-        {/* Navigation */}
-        <nav className="relative z-10 border-b border-white/10 backdrop-blur-xl bg-black/50">
-          <div className="max-w-5xl mx-auto px-6 py-4">
-            <button
-              onClick={() => setSelectedPost(null)}
-              className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              Back to Blog
-            </button>
-          </div>
-        </nav>
+        {/* Back Button */}
+        <div className="relative z-10 max-w-5xl mx-auto px-6 py-4">
+          <button
+            onClick={() => setSelectedPost(null)}
+            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Blog
+          </button>
+        </div>
 
         {/* Article Content */}
-        <article className="relative z-10 max-w-4xl mx-auto px-6 py-16">
+        <article className="relative z-10 max-w-4xl mx-auto px-6 py-8">
           {/* Header */}
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-6">
@@ -346,6 +343,8 @@ export default function BlogContent() {
           </div>
         </article>
 
+        <Footer />
+
         <style jsx>{`
           @keyframes blob {
             0%, 100% { transform: translate(0px, 0px) scale(1); }
@@ -371,27 +370,6 @@ export default function BlogContent() {
         <div className="absolute top-0 -right-4 w-96 h-96 bg-red-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
         <div className="absolute -bottom-8 left-20 w-96 h-96 bg-red-700 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
-
-      {/* Navigation */}
-      <nav className="relative z-10 border-b border-white/10 backdrop-blur-xl bg-black/50">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-red-500 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                </svg>
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-                Stelliform Digital
-              </span>
-            </div>
-            <Link href="/" className="text-gray-400 hover:text-white transition-colors">
-              Home
-            </Link>
-          </div>
-        </div>
-      </nav>
 
       {/* Hero Section */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-12">
@@ -538,24 +516,7 @@ export default function BlogContent() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-white/10 mt-24">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-red-600 to-red-500 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                </svg>
-              </div>
-              <span className="text-lg font-bold text-white">Stelliform Digital</span>
-            </div>
-            <div className="text-gray-400 text-sm">
-              © 2026 Stelliform Digital. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       <style jsx>{`
         @keyframes blob {

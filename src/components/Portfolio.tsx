@@ -5,63 +5,84 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Updated project data with Loka MD and removed Stelliform
+// Brand-accented projects with varied colors to add visual pop
 const projects = [
   {
     id: 1,
-    title: 'Loka MD',
+    title: 'LOKA MD',
+    slug: 'loka-md',
     category: 'Membership Organization',
-    description: 'Transformed an informational website into a dynamic membership platform connecting three generations—youth bringing fresh ideas and technology, adults providing leadership and mentorship, and elders sharing traditional Korean culture and language.',
-    image: '/projects/loka-md.jpg',
-    tags: ['Next.js', 'Membership Platform', 'Community Building', 'Multi-generational Design'],
+    description:
+      'Redesigned from an informational site into a membership-focused platform uniting three generations — elders (tradition & language), adults (leadership & mentorship), and youth (innovation & technology).',
+    image: '@/projects/LokaMD.jpg', // new redesign (you provided)
+    // Accent: emerald for "growth/community"
+    accents: {
+      card: 'from-emerald-700 to-emerald-600',
+      tag: 'bg-emerald-500/10 border-emerald-400/40 text-emerald-200 hover:border-emerald-300/70',
+      metric: 'from-emerald-500 to-emerald-400',
+      outline: 'hover:border-emerald-500/60',
+      glow: 'bg-gradient-to-br from-emerald-700 to-emerald-500',
+    },
+    tags: ['Next.js', 'Membership', 'CRM-ready', 'Community UX'],
     link: '/case-study/loka-md',
-    color: 'from-red-600 to-red-500',
     metrics: {
       increase: '+45%',
-      metric: 'Membership Growth',
-      oldSite: 'lokamd.org',
-      newSite: 'sono-demo-websites.com'
-    }
+      metric: 'Projected Membership Growth',
+    },
   },
   {
     id: 2,
     title: 'ACH Tax Services',
+    slug: 'ach-tax-services',
     category: 'Tax Services Platform',
-    description: 'Comprehensive client intake system with PDF generation and automated workflows designed to streamline tax service delivery and improve client onboarding efficiency.',
-    image: '/projects/ach-tax.jpg',
+    description:
+      'Client intake system with PDF generation and automated workflows to reduce manual effort and increase completion rate.',
+    image: '@/projects/ach-tax.jpg',
+    // Accent: indigo for “trust/operations”
+    accents: {
+      card: 'from-indigo-700 to-indigo-600',
+      tag: 'bg-indigo-500/10 border-indigo-400/40 text-indigo-200 hover:border-indigo-300/70',
+      metric: 'from-indigo-500 to-indigo-400',
+      outline: 'hover:border-indigo-500/60',
+      glow: 'bg-gradient-to-br from-indigo-700 to-indigo-500',
+    },
     tags: ['PDF Generation', 'Automation', 'Custom Forms', 'Next.js'],
     link: '/case-study/ach-tax-services',
-    color: 'from-red-500 to-red-400',
     metrics: {
       increase: '+68%',
       metric: 'Intake Completion Rate',
-      oldSite: '',
-      newSite: ''
-    }
+    },
   },
   {
     id: 3,
     title: 'The McPhillip Firm',
+    slug: 'mcphillip-firm',
     category: 'Legal Website',
-    description: 'Complete web development and digital marketing solution for a premier personal injury law firm focused on lead generation and client conversion.',
-    image: '/projects/mcphillip.jpg',
-    tags: ['Next.js', 'Google Ads', 'Lead Generation', 'CRM Integration'],
+    description:
+      'High-converting legal site with paid media and CRM integration to scale qualified leads.',
+    image: '@/projects/mcphillip.jpg',
+    // Accent: amber for “action/results”
+    accents: {
+      card: 'from-amber-600 to-amber-500',
+      tag: 'bg-amber-500/10 border-amber-400/40 text-amber-200 hover:border-amber-300/70',
+      metric: 'from-amber-400 to-amber-300',
+      outline: 'hover:border-amber-500/60',
+      glow: 'bg-gradient-to-br from-amber-600 to-amber-400',
+    },
+    tags: ['Next.js', 'Google Ads', 'Lead Gen', 'CRM Integration'],
     link: '/case-study/mcphillip-firm',
-    color: 'from-red-700 to-red-600',
     metrics: {
       increase: '+156%',
       metric: 'Qualified Leads',
-      oldSite: '',
-      newSite: ''
-    }
-  }
+    },
+  },
 ];
 
 export default function Portfolio() {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   return (
-    <section id="portfolio" className="max-w-7xl mx-auto py-20 px-6">
+    <section id="work" className="max-w-7xl mx-auto py-20 px-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -74,16 +95,19 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="inline-block mb-4 px-4 py-2 border border-red-500/30 rounded-full text-sm text-red-400 bg-red-500/5"
+          className="inline-block mb-4 px-4 py-2 border border-red-500/30 rounded-full text-sm text-red-300 bg-red-500/5"
         >
           Selected Work
         </motion.div>
-        
+
         <h2 className="text-5xl md:text-6xl font-bold mb-4">
-          Featured <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">Projects</span>
+          Featured{' '}
+          <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">
+            Projects
+          </span>
         </h2>
         <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-          A showcase of recent client work across web development, digital marketing, and automation.
+          A showcase of outcomes across web development, automation, and growth.
         </p>
       </motion.div>
 
@@ -93,14 +117,15 @@ export default function Portfolio() {
             key={project.id}
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.2 }}
+            transition={{ duration: 0.8, delay: index * 0.15 }}
             viewport={{ once: true }}
             onMouseEnter={() => setHoveredId(project.id)}
             onMouseLeave={() => setHoveredId(null)}
             className="relative group"
           >
+            {/* Internal link to case study only (do not leave website) */}
             <Link href={project.link} className="block">
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-white/10 hover:border-red-500/50 transition-all duration-500">
+              <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-950 to-black border border-white/10 ${project.accents.outline} transition-all duration-500`}>
                 <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
                   {/* Left: Content */}
                   <div className="flex flex-col justify-center">
@@ -108,15 +133,15 @@ export default function Portfolio() {
                       animate={{ x: hoveredId === project.id ? 10 : 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="text-sm text-red-400 mb-2 tracking-wider">
+                      <div className="text-sm text-gray-400 mb-2 tracking-wider">
                         {String(project.id).padStart(2, '0')} / {project.category}
                       </div>
-                      
-                      <h3 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent group-hover:from-red-500 group-hover:to-red-600 transition-all">
+
+                      <h3 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                         {project.title}
                       </h3>
-                      
-                      <p className="text-gray-400 mb-6 leading-relaxed">
+
+                      <p className="text-gray-300/90 mb-6 leading-relaxed">
                         {project.description}
                       </p>
 
@@ -125,116 +150,94 @@ export default function Portfolio() {
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="mb-6 p-4 rounded-lg bg-gradient-to-r from-red-600/10 to-red-500/10 border border-red-500/30"
+                        className="mb-6 p-4 rounded-lg border border-white/10"
+                        style={{
+                          background:
+                            'linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02))',
+                        }}
                       >
-                        <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent">
+                        <div className={`text-3xl md:text-4xl font-bold bg-gradient-to-r ${project.accents.metric} bg-clip-text text-transparent`}>
                           {project.metrics.increase}
                         </div>
                         <div className="text-sm text-gray-400 mt-1">
                           {project.metrics.metric}
                         </div>
                       </motion.div>
-                      
+
                       <div className="flex flex-wrap gap-2 mb-6">
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-3 py-1 text-xs bg-red-500/10 border border-red-500/30 rounded-full text-red-300 hover:border-red-500/60 transition-colors"
+                            className={`px-3 py-1 text-xs rounded-full border transition-colors ${project.accents.tag}`}
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
-                      
+
                       <motion.div
                         animate={{ x: hoveredId === project.id ? 5 : 0 }}
-                        className="inline-flex items-center gap-2 text-red-400 font-semibold hover:text-red-300 transition-colors"
+                        className="inline-flex items-center gap-2 text-red-300 font-semibold hover:text-red-200 transition-colors"
                       >
                         View Case Study →
                       </motion.div>
                     </motion.div>
                   </div>
 
-                  {/* Right: Image/Visual */}
+                  {/* Right: Visual */}
                   <div className="relative aspect-[4/3] md:aspect-auto">
                     <motion.div
-                      animate={{ scale: hoveredId === project.id ? 1.05 : 1 }}
+                      animate={{ scale: hoveredId === project.id ? 1.03 : 1 }}
                       transition={{ duration: 0.5 }}
                       className="absolute inset-0 rounded-xl overflow-hidden"
                     >
-                      {/* Placeholder gradient with brand colors */}
-                      <div className={`w-full h-full bg-gradient-to-br ${project.color} opacity-20`} />
-                      
-                      {/* Add actual project image here when ready */}
-                      {/* <Image 
-                        src={project.image} 
+                      {/* Accent glow underneath */}
+                      <motion.div
+                        animate={{
+                          opacity: hoveredId === project.id ? 0.2 : 0.1,
+                        }}
+                        className={`absolute inset-0 ${project.accents.glow} blur-3xl -z-10`}
+                      />
+                      {/* If you have screenshots, uncomment Image */}
+                      {/* <Image
+                        src={project.image}
                         alt={project.title}
                         fill
+                        priority={index === 0}
                         className="object-cover"
                       /> */}
-                      
-                      {/* Overlay effect */}
+                      {/* Placeholder gradient backdrop + dark overlay to keep text readable */}
+                      <div className={`w-full h-full bg-gradient-to-br ${project.accents.card} opacity-30`} />
                       <motion.div
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: hoveredId === project.id ? 1 : 0 }}
-                        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
+                        animate={{ opacity: hoveredId === project.id ? 1 : 0.6 }}
+                        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"
                       />
-
-                      {/* Demo/Live Link Badge - Fixed: Using button instead of nested anchor */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: hoveredId === project.id ? 1 : 0, y: hoveredId === project.id ? 0 : 20 }}
-                        transition={{ duration: 0.3 }}
-                        className="absolute bottom-4 right-4 flex gap-2"
-                      >
-                        {project.metrics.newSite && (
-                          <button
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              window.open(`https://${project.metrics.newSite}`, '_blank');
-                            }}
-                            className="px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-semibold rounded-lg transition-colors cursor-pointer"
-                          >
-                            Live Demo
-                          </button>
-                        )}
-                      </motion.div>
                     </motion.div>
                   </div>
                 </div>
-
-                {/* Animated background glow */}
-                <motion.div
-                  animate={{
-                    opacity: hoveredId === project.id ? 0.3 : 0,
-                    scale: hoveredId === project.id ? 1 : 0.8
-                  }}
-                  transition={{ duration: 0.5 }}
-                  className={`absolute inset-0 bg-gradient-to-br ${project.color} blur-3xl -z-10`}
-                />
               </div>
             </Link>
           </motion.div>
         ))}
       </div>
 
-      {/* CTA at bottom */}
+      {/* CTA at bottom (no hash link; smooth scroll) */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
         viewport={{ once: true }}
         className="text-center mt-16"
       >
         <p className="text-gray-400 mb-4">Interested in working together?</p>
         <motion.button
           onClick={() => {
-            const contactSection = document.getElementById('contact');
-            contactSection?.scrollIntoView({ behavior: 'smooth' });
+            const el = document.getElementById('contact');
+            el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }}
-          whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(220, 38, 38, 0.4)" }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(220,38,38,0.4)' }}
+          whileTap={{ scale: 0.96 }}
           className="inline-block px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 rounded-lg font-semibold text-white transition-all cursor-pointer"
         >
           Let’s Build Something Amazing

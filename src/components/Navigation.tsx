@@ -37,11 +37,11 @@ export default function Navigation() {
 
           <div className="hidden md:flex items-center gap-8 text-sm">
             {[
-              { name: 'Work', href: '#work' },
-              { name: 'Services', href: '#services' },
+              { name: 'Work', href: '/#work' },
+              { name: 'Services', href: '/#services' },
               { name: 'Blog', href: '/blog' },
-              { name: 'About', href: '#about' },
-              { name: 'Contact', href: '#contact' }
+              { name: 'About', href: '/#about' },
+              { name: 'Contact', href: '/#contact' }
             ].map((item, index) => (
               <motion.div
                 key={item.name}
@@ -71,7 +71,7 @@ export default function Navigation() {
 
         <div className="flex items-center gap-4">
           <motion.a
-            href="#contact"
+            href="/#contact"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.7 }}

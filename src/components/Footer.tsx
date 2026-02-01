@@ -4,20 +4,20 @@ import { motion } from 'framer-motion';
 
 const footerLinks = {
   map: [
-    { label: 'FEATURES', href: '#services' },
-    { label: 'SERVICES', href: '#services' },
-    { label: 'REVIEWS', href: '#' },
-    { label: 'FAQS', href: '#' }
+    { label: 'FEATURES', href: '/#services' },
+    { label: 'SERVICES', href: '/#services' },
+    { label: 'REVIEWS', href: '/' },
+    { label: 'FAQS', href: '/' }
   ],
   company: [
-    { label: 'HOME', href: '#' },
-    { label: 'ABOUT', href: '#about' },
-    { label: 'PRICING', href: '#' },
-    { label: 'CONTACT', href: '#contact' }
+    { label: 'HOME', href: '/' },
+    { label: 'ABOUT', href: '/#about' },
+    { label: 'PRICING', href: '/' },
+    { label: 'CONTACT', href: '/#contact' }
   ],
   legal: [
-    { label: 'PRIVACY POLICY', href: '#' },
-    { label: 'TERMS & CONDITIONS', href: '#' }
+    { label: 'PRIVACY POLICY', href: '/' },
+    { label: 'TERMS & CONDITIONS', href: '/' }
   ]
 };
 
@@ -161,7 +161,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="text-right mt-8"
         >
-          <a href="#contact" className="text-sm hover:text-red-400 transition inline-flex items-center gap-2">
+          <a href="/#contact" className="text-sm hover:text-red-400 transition inline-flex items-center gap-2">
             Start Conversation →
           </a>
         </motion.div>
