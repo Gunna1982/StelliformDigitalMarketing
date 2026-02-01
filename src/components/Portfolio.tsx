@@ -14,7 +14,7 @@ const projects = [
     category: 'Membership Organization',
     description:
       'Redesigned from an informational site into a membership-focused platform uniting three generations — elders (tradition & language), adults (leadership & mentorship), and youth (innovation & technology).',
-    image: '@/projects/LokaMD.jpg', // new redesign (you provided)
+    image: '/projects/LokaMD2.jpg', // new redesign (you provided)
     // Accent: emerald for "growth/community"
     accents: {
       card: 'from-emerald-700 to-emerald-600',
