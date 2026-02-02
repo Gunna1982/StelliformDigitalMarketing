@@ -11,6 +11,7 @@ import PageLoader from '@/components/PageLoader';
 import ParticlesBackground from '@/components/ParticlesBackground';
 import LogoCarouselParticles from '@/components/LogoCarousel3D';
 import Hero2 from '@/components/Hero2';
+import HowItWorks from '@/components/Howitworks';
 import ExitIntentPopup from '@/components/ExitIntentPopup';
 
 export default function Home() {
@@ -22,7 +23,8 @@ export default function Home() {
       <main>
         <Hero2/>
         <LogoCarouselParticles/>
-        <Portfolio />
+        <HowItWorks/>    
+        {/*<Portfolio />*/}
         <Features />
         <Testimonials />
         <Pricing />
