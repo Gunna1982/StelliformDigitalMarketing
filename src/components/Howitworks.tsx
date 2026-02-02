@@ -3,6 +3,7 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function HowItWorks() {
   const steps = [
@@ -123,13 +124,13 @@ export default function HowItWorks() {
                 {/* Optional CTA for first step */}
                 {index === 0 && (
                   <div className="pt-4">
-                    <a 
-                      href="#contact"
+                    <Link
+                      href="/#contact"
                       className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-b from-red-500 to-red-700 text-white text-sm font-semibold shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)] hover:scale-105 transition-all border border-red-400/50"
                     >
                       Get Your Free Audit
                       <Icon icon="ph:arrow-right" className="text-lg" />
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>
@@ -186,13 +187,13 @@ export default function HowItWorks() {
               <p className="text-neutral-400 mb-6 max-w-xl mx-auto">
                 Book a free 30-minute strategy session. We&rsquo;ll analyze your current marketing and show you exactly where you&rsquo;re leaving money on the table.
               </p>
-              <a 
-                href="#contact"
+              <Link
+                href="/#contact"
                 className="inline-flex items-center gap-2 h-12 px-8 rounded-full bg-gradient-to-b from-red-500 to-red-700 text-white text-sm font-semibold shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)] hover:scale-105 transition-all border border-red-400/50"
               >
                 Book Your Strategy Call
                 <Icon icon="ph:calendar-check" className="text-lg" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

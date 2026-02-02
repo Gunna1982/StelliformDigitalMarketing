@@ -2,6 +2,7 @@
   "name": "stelliformdigital",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "node dev.js",
     "build": "next build",

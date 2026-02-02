@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import Navigation from './Navigation';
 import Footer from './Footer';
 
@@ -337,9 +338,9 @@ export default function BlogContent() {
             <p className="text-gray-300 mb-6 text-lg">
               Let&rsquo;s discuss how data-driven growth strategies can accelerate your business results.
             </p>
-            <button className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/50">
+            <Link href="/#contact" className="inline-block px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/50">
               Schedule a Strategy Call
-            </button>
+            </Link>
           </div>
         </article>
 
@@ -505,12 +506,12 @@ export default function BlogContent() {
               Let&rsquo;s build a data-driven marketing strategy that delivers measurable ROI and sustainable growth for your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/50">
+              <Link href="/#contact" className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/50 text-center">
                 Book a Strategy Call
-              </button>
-              <button className="px-8 py-4 border border-white/20 hover:border-white/40 text-white font-semibold rounded-xl transition-all duration-300 hover:bg-white/5">
+              </Link>
+              <Link href="/#services" className="px-8 py-4 border border-white/20 hover:border-white/40 text-white font-semibold rounded-xl transition-all duration-300 hover:bg-white/5 text-center">
                 View Our Services
-              </button>
+              </Link>
             </div>
           </div>
         </div>

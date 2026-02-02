@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import Script from 'next/script';
+import Link from 'next/link';
 
 export default function Hero2() {
   return (
@@ -201,19 +202,19 @@ export default function Hero2() {
               {/* Updated CTAs */}
               <div className="flex flex-col items-start gap-3 reveal-content">
                 <div className="flex items-center gap-4 flex-wrap">
-                  <a 
-                    href="#contact"
+                  <Link
+                    href="/#contact"
                     className="h-12 px-8 rounded-full bg-gradient-to-b from-red-500 to-red-700 text-white text-sm font-semibold shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)] hover:scale-105 transition-all border border-red-400/50 flex items-center justify-center"
                   >
                     Get Your Free Marketing Audit
-                  </a>
-                  <a 
-                    href="#work"
+                  </Link>
+                  <Link
+                    href="/#work"
                     className="h-12 px-8 rounded-full bg-white/5 backdrop-blur-md border border-white/20 text-white text-sm font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2"
                   >
                     View Case Studies
                     <span>→</span>
-                  </a>
+                  </Link>
                 </div>
                 <p className="text-xs text-neutral-500 ml-1">
                   30-min strategy session • Discover what&apos;s costing you leads • No obligation
@@ -263,12 +264,12 @@ export default function Hero2() {
                     </svg>
                   </div>
 
-                  <a 
-                    href="#work"
+                  <Link
+                    href="/#work"
                     className="w-full h-10 rounded-xl bg-gradient-to-r from-red-600 to-red-500 text-white text-xs font-semibold shadow-lg shadow-red-900/20 hover:shadow-red-900/40 transition-all border-t border-white/20 flex items-center justify-center"
                   >
                     View Full Case Study
-                  </a>
+                  </Link>
 
                   <div className="mt-6 pt-6 border-t border-white/5 flex items-center justify-between text-[10px] text-neutral-500">
                     <div className="flex items-center gap-2">
@@ -319,14 +320,14 @@ export default function Hero2() {
               </div>
 
               <div className="flex items-center gap-3">
-                <a 
-                  href="#contact"
+                <Link
+                  href="/#contact"
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 text-white text-xs font-medium shadow-md shadow-red-900/30 hover:bg-red-500 transition-all"
                 >
                   Book Strategy Call
                   {/* @ts-expect-error iconify-icon custom element */}
                   <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

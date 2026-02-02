@@ -22,7 +22,7 @@ jobs:
 
       - name: Run reserved-name check
         run: |
-          node scripts/check-reserved-names.js --all
+          node scripts/check-reserved-names.cjs --all
 
   history-scan:
     name: Optional history scan (pushes to main or manual)
@@ -41,4 +41,4 @@ jobs:
 
       - name: Run history scan
         run: |
-          node scripts/check-reserved-names.js --history
+          node scripts/check-reserved-names.cjs --history

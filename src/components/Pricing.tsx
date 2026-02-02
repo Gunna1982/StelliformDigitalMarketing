@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useMemo, useState } from 'react';
+import Link from 'next/link';
 
 type BillingCycle = 'monthly' | 'quarterly';
 
@@ -233,18 +234,19 @@ export default function Pricing() {
                     ))}
                   </div>
 
-                  <motion.a
-                    href="#contact"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className={`block text-center w-full py-3 rounded-lg font-semibold transition-all ${
-                      plan.popular
-                        ? 'bg-gradient-to-r from-red-600 to-red-500'
-                        : 'border border-gray-700 hover:border-red-400'
-                    }`}
-                  >
-                    Get Started
-                  </motion.a>
+                  <Link href="/#contact">
+                    <motion.span
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`block text-center w-full py-3 rounded-lg font-semibold transition-all ${
+                        plan.popular
+                          ? 'bg-gradient-to-r from-red-600 to-red-500'
+                          : 'border border-gray-700 hover:border-red-400'
+                      }`}
+                    >
+                      Get Started
+                    </motion.span>
+                  </Link>
                 </>
               )}
 
@@ -269,14 +271,15 @@ export default function Pricing() {
                     ))}
                   </div>
 
-                  <motion.a
-                    href="#contact"
-                    whileHover={{ scale: 1.02, borderColor: 'rgb(239, 68, 68)' }}
-                    whileTap={{ scale: 0.98 }}
-                    className="block text-center w-full py-3 border border-gray-700 rounded-lg transition-all"
-                  >
-                    Book a Call
-                  </motion.a>
+                  <Link href="/#contact">
+                    <motion.span
+                      whileHover={{ scale: 1.02, borderColor: 'rgb(239, 68, 68)' }}
+                      whileTap={{ scale: 0.98 }}
+                      className="block text-center w-full py-3 border border-gray-700 rounded-lg transition-all"
+                    >
+                      Book a Call
+                    </motion.span>
+                  </Link>
 
                   <div className="mt-4 text-xs text-gray-500">
                     We’ll scope it fast and share exact deliverables + timeline.

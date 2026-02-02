@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
+import Link from 'next/link';
 import CornerPeel from './CornerPeel';
 
 type ServiceBilling = 'one-time' | 'ongoing';
@@ -138,14 +139,15 @@ function ServiceCard({ feature, index }: { feature: (typeof features)[number]; i
             <span className="text-xs text-gray-500">{ctaHint}</span>
           </div>
 
-          <motion.a
-            href="#contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-4 py-2 bg-gradient-to-r from-red-600 to-red-500 rounded-lg text-sm font-semibold whitespace-nowrap"
-          >
-            {ctaLabel}
-          </motion.a>
+          <Link href="/#contact">
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block px-4 py-2 bg-gradient-to-r from-red-600 to-red-500 rounded-lg text-sm font-semibold whitespace-nowrap"
+            >
+              {ctaLabel}
+            </motion.span>
+          </Link>
         </div>
       </div>
     </motion.div>
