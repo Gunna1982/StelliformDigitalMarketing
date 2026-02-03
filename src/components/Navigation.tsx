@@ -37,10 +37,9 @@ export default function Navigation() {
 
           <div className="hidden md:flex items-center gap-8 text-sm">
             {[
-              { name: 'Work', href: '/#work' },
+              { name: 'Home', href: '/' },
               { name: 'Services', href: '/#services' },
               { name: 'Blog', href: '/blog' },
-              { name: 'About', href: '/#about' },
               { name: 'Contact', href: '/#contact' }
             ].map((item, index) => (
               <motion.div

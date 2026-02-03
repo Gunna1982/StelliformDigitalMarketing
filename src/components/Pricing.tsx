@@ -11,12 +11,14 @@ type Plan = {
   description: string;
   popular?: boolean;
   badge?: string;
-
-  // Growth/Scale
+  
   monthlyPrice?: number;
   features?: string[];
-
-  // Custom
+  
+  // New: Value props
+  valueProps?: string[];
+  compareTo?: string;
+  
   custom?: boolean;
   startsAt?: string;
   typical?: string[];
@@ -28,40 +30,56 @@ const plans: Plan[] = [
   {
     name: 'Growth',
     monthlyPrice: 7500,
-    description: 'For businesses that want consistent growth execution and clean, fast shipping.',
+    description: 'Perfect for businesses ready to scale one channel profitably before expanding.',
+    compareTo: 'Replaces: $90K/year marketing hire + $15K in tools',
+    valueProps: [
+      '~50 hours of expert work per month',
+      'Avg. 3-5x ROI within first 90 days',
+      'Week-to-week flexibility',
+    ],
     features: [
-      '1 primary growth channel (SEO or Ads)',
-      'Landing page + conversion improvements',
-      'Tracking + simple reporting (what worked, what to do next)',
-      'Weekly syncs + 24-hour response time',
+      'Google Ads OR SEO (your choice): Full campaign setup, ongoing optimization, and monthly performance analysis',
+      '2-3 high-converting landing pages: Design, build, and A/B test until we hit 30%+ conversion improvement',
+      'Analytics & tracking: Complete setup (GA4, conversion tracking, phone call tracking) with weekly "what worked" reports',
+      'Lead qualification system: Forms, routing, and follow-up recommendations to close more deals',
+      'Weekly 30-min strategy calls + Slack/email access (replies within 24 hours)',
     ],
   },
   {
     name: 'Scale',
     monthlyPrice: 15000,
-    description: 'For teams that want to move fast across multiple growth channels.',
+    description: 'For businesses ready to dominate multiple channels and move faster.',
     popular: true,
     badge: 'MOST POPULAR',
+    compareTo: 'Replaces: $180K/year in salaries + $25K in tools/software',
+    valueProps: [
+      '~100 hours of expert work per month',
+      'Multi-channel strategy = 2-3x more leads',
+      'Same-day turnaround on requests',
+    ],
     features: [
-      'Everything in Growth, plus:',
-      '2–3 growth channels (Ads + SEO + Email/Social)',
-      'More landing pages + ongoing iteration',
-      'Automation + CRM improvements',
-      'Faster turnaround + same-day response time',
+      'Everything in Growth, PLUS:',
+      'Multi-channel execution: Google Ads + Facebook/Instagram + SEO + Email (we manage all simultaneously)',
+      '5-8 landing pages + ongoing iteration: New pages monthly, constant testing, conversion rate optimization',
+      'CRM setup & automation: Lead routing, follow-up sequences, pipeline tracking (MyCase, Go High Level, or similar)',
+      'Advanced reporting: Custom dashboards showing cost-per-lead by channel, lead quality scores, and revenue attribution',
+      'Bi-weekly strategy sessions + same-day Slack/email response',
+      'Priority access: Your requests go to the front of the queue',
     ],
   },
   {
     name: 'Custom',
     custom: true,
     startsAt: '10k',
-    description: 'For complex builds, aggressive growth targets, or multi-channel execution.',
+    description: 'For complex projects, full website builds, or aggressive multi-location growth.',
+    compareTo: 'Replaces: Full in-house marketing team ($250K+/year)',
     typical: [
-      'Full website build + landing page system',
-      'Paid ads (Google/Meta) + conversion tracking',
-      'CRM setup + automation (pipelines, follow-ups, routing)',
-      'Local SEO or multi-location SEO',
-      'Custom dashboards + reporting (what drove calls/leads)',
-      'Integrations (forms → CRM → email/SMS → analytics)',
+      'Complete website redesign + conversion-focused architecture (Next.js, mobile-first, sub-2s load times)',
+      'Multi-location SEO: Optimize for 3-10+ locations with local landing pages and Google Business Profile management',
+      'Full-funnel paid ads: Google + Meta + retargeting across 5+ campaigns with advanced audience segmentation',
+      'Enterprise CRM implementation: Full pipeline setup, automation, integrations, and team training',
+      'Custom reporting suite: Real-time dashboards tracking every lead source, conversion point, and revenue driver',
+      'Dedicated account team: Direct access to strategist, designer, and developer',
     ],
   },
 ];
@@ -109,11 +127,11 @@ export default function Pricing() {
           Growth plans that <span className="gradient-text">scale</span>
         </h2>
         <p className="text-xl text-gray-400">
-          Choose a tier based on how fast you want to move and how much you want handled.
+          Transparent pricing. Clear deliverables. Real results.
         </p>
       </motion.div>
 
-      {/* Global toggle (click-safe) */}
+      {/* Billing toggle */}
       <div className="relative z-20 pointer-events-auto flex flex-col items-center justify-center gap-3 mb-12">
         <div className="inline-flex items-center gap-2 p-1 rounded-xl border border-white/10 bg-white/[0.03]">
           <button
@@ -160,7 +178,7 @@ export default function Pricing() {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
-              className={`rounded-2xl p-10 transition-all duration-300 ${
+              className={`rounded-2xl p-8 transition-all duration-300 ${
                 plan.popular
                   ? 'bg-red-500/5 border-2 border-red-500'
                   : 'bg-white/[0.03] border border-white/10'
@@ -178,28 +196,28 @@ export default function Pricing() {
               )}
 
               <h3 className="text-3xl font-bold mb-2">{plan.name}</h3>
-              <p className="text-gray-400 mb-6">{plan.description}</p>
+              <p className="text-gray-400 mb-6 text-sm leading-relaxed">{plan.description}</p>
 
               {/* Price */}
-              <div className="mb-6">
-                {isCustom && <div className="text-sm text-gray-500 mb-2">STARTS AT</div>}
+              <div className="mb-4">
+                {isCustom && <div className="text-xs text-gray-500 mb-2 uppercase tracking-wide">Starts At</div>}
 
-                <span className="text-gray-500 text-xl">$</span>
-
-                <motion.span
-                  key={`${plan.name}-${billingCycle}`}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-5xl font-bold"
-                >
-                  {isCustom ? plan.startsAt : formatMoney(monthly)}
-                </motion.span>
-
-                {!isCustom && <span className="text-gray-500">/ mo</span>}
+                <div className="flex items-baseline">
+                  <span className="text-gray-500 text-xl">$</span>
+                  <motion.span
+                    key={`${plan.name}-${billingCycle}`}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-5xl font-bold"
+                  >
+                    {isCustom ? plan.startsAt : formatMoney(monthly)}
+                  </motion.span>
+                  {!isCustom && <span className="text-gray-500 text-lg ml-1">/ mo</span>}
+                </div>
               </div>
 
               {!isCustom && (
-                <div className="text-sm text-gray-500 mb-8">
+                <div className="text-xs text-gray-500 mb-6">
                   {billingCycle === 'monthly' ? (
                     <span>Paid monthly.</span>
                   ) : (
@@ -211,12 +229,32 @@ export default function Pricing() {
                 </div>
               )}
 
-              {/* Growth/Scale features */}
+              {/* Value props - NEW */}
+              {plan.valueProps && (
+                <div className="mb-6 p-4 bg-white/[0.02] border border-white/5 rounded-lg">
+                  <div className="text-xs font-semibold text-red-400 mb-3 uppercase tracking-wide">The Value</div>
+                  <div className="space-y-2">
+                    {plan.valueProps.map((prop, i) => (
+                      <div key={i} className="flex items-start gap-2 text-xs text-gray-300">
+                        <span className="text-red-400 mt-0.5">→</span>
+                        <span>{prop}</span>
+                      </div>
+                    ))}
+                  </div>
+                  {plan.compareTo && (
+                    <div className="mt-3 pt-3 border-t border-white/5 text-xs text-gray-500">
+                      {plan.compareTo}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Features */}
               {!isCustom && (
                 <>
                   <div className="space-y-3 mb-8">
-                    <div className="text-sm font-semibold mb-4">
-                      {plan.name === 'Growth' ? "WHAT'S INCLUDED" : 'SCALE INCLUDES'}
+                    <div className="text-xs font-semibold mb-4 text-gray-400 uppercase tracking-wide">
+                      What&apos;s Included
                     </div>
 
                     {(plan.features ?? []).map((feature, i) => (
@@ -224,12 +262,12 @@ export default function Pricing() {
                         key={`${plan.name}-${feature}-${i}`}
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.08 }}
+                        transition={{ delay: i * 0.06 }}
                         viewport={{ once: true }}
-                        className="flex items-start gap-2"
+                        className="flex items-start gap-3"
                       >
-                        <span className="text-red-400 mt-0.5">✓</span>
-                        <span className="text-sm">{feature}</span>
+                        <span className="text-red-400 mt-1 text-sm flex-shrink-0">✓</span>
+                        <span className="text-sm text-gray-300 leading-relaxed">{feature}</span>
                       </motion.div>
                     ))}
                   </div>
@@ -240,8 +278,8 @@ export default function Pricing() {
                       whileTap={{ scale: 0.98 }}
                       className={`block text-center w-full py-3 rounded-lg font-semibold transition-all ${
                         plan.popular
-                          ? 'bg-gradient-to-r from-red-600 to-red-500'
-                          : 'border border-gray-700 hover:border-red-400'
+                          ? 'bg-gradient-to-r from-red-600 to-red-500 text-white'
+                          : 'border border-gray-700 hover:border-red-400 text-white'
                       }`}
                     >
                       Get Started
@@ -250,10 +288,18 @@ export default function Pricing() {
                 </>
               )}
 
-              {/* Custom content (no Sarah Park card) */}
+              {/* Custom content */}
               {isCustom && (
                 <>
-                  <div className="text-sm font-semibold mb-4">TYPICAL CUSTOM WORK</div>
+                  {plan.compareTo && (
+                    <div className="mb-6 p-4 bg-white/[0.02] border border-white/5 rounded-lg">
+                      <div className="text-xs text-gray-500">{plan.compareTo}</div>
+                    </div>
+                  )}
+
+                  <div className="text-xs font-semibold mb-4 text-gray-400 uppercase tracking-wide">
+                    Typical Custom Work
+                  </div>
 
                   <div className="space-y-3 mb-8">
                     {(plan.typical ?? []).map((item, i) => (
@@ -261,12 +307,12 @@ export default function Pricing() {
                         key={`${plan.name}-${item}-${i}`}
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.08 }}
+                        transition={{ delay: i * 0.06 }}
                         viewport={{ once: true }}
-                        className="flex items-start gap-2"
+                        className="flex items-start gap-3"
                       >
-                        <span className="text-red-400 mt-0.5">✓</span>
-                        <span className="text-sm text-gray-200/90">{item}</span>
+                        <span className="text-red-400 mt-1 text-sm flex-shrink-0">✓</span>
+                        <span className="text-sm text-gray-300 leading-relaxed">{item}</span>
                       </motion.div>
                     ))}
                   </div>
@@ -275,14 +321,14 @@ export default function Pricing() {
                     <motion.span
                       whileHover={{ scale: 1.02, borderColor: 'rgb(239, 68, 68)' }}
                       whileTap={{ scale: 0.98 }}
-                      className="block text-center w-full py-3 border border-gray-700 rounded-lg transition-all"
+                      className="block text-center w-full py-3 border border-gray-700 rounded-lg transition-all text-white hover:border-red-400"
                     >
                       Book a Call
                     </motion.span>
                   </Link>
 
-                  <div className="mt-4 text-xs text-gray-500">
-                    We’ll scope it fast and share exact deliverables + timeline.
+                  <div className="mt-4 text-xs text-gray-500 text-center">
+                    We&rsquo;ll scope it, quote it, and deliver on time.
                   </div>
                 </>
               )}
@@ -291,6 +337,7 @@ export default function Pricing() {
         })}
       </div>
 
+      {/* Bottom trust signals */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -305,6 +352,51 @@ export default function Pricing() {
         <div className="flex items-center gap-2">
           <span>✖️</span>
           <span>Cancel anytime</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span>📊</span>
+          <span>Transparent reporting</span>
+        </div>
+      </motion.div>
+
+      {/* FAQ Section - NEW */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="mt-20 max-w-3xl mx-auto"
+      >
+        <h3 className="text-2xl font-bold text-center mb-8">Common Questions</h3>
+        
+        <div className="space-y-6">
+          <div className="p-6 bg-white/[0.02] border border-white/5 rounded-lg">
+            <div className="font-semibold mb-2 text-white">What if I need to pause or cancel?</div>
+            <div className="text-sm text-gray-400">
+              No problem. Monthly plans can be paused or canceled with 7 days notice. We&rsquo;ll wrap up any in-progress work and hand everything over cleanly.
+            </div>
+          </div>
+
+          <div className="p-6 bg-white/[0.02] border border-white/5 rounded-lg">
+            <div className="font-semibold mb-2 text-white">How fast will I see results?</div>
+            <div className="text-sm text-gray-400">
+              Most clients see measurable improvements within 30-60 days. Paid ads show results faster (days to weeks), while SEO builds momentum over 90-120 days. We track everything and show you what&rsquo;s working.
+            </div>
+          </div>
+
+          <div className="p-6 bg-white/[0.02] border border-white/5 rounded-lg">
+            <div className="font-semibold mb-2 text-white">Do you require long-term contracts?</div>
+            <div className="text-sm text-gray-400">
+              No. Monthly plans are month-to-month. Quarterly plans lock in for 3 months but give you a 10% discount. That&rsquo;s it.
+            </div>
+          </div>
+
+          <div className="p-6 bg-white/[0.02] border border-white/5 rounded-lg">
+            <div className="font-semibold mb-2 text-white">What makes this different from hiring someone?</div>
+            <div className="text-sm text-gray-400">
+              You get an entire team (strategist, designer, analyst) for less than one full-time hire. No benefits, no training, no turnover risk. Just consistent execution and results.
+            </div>
+          </div>
         </div>
       </motion.div>
     </section>
