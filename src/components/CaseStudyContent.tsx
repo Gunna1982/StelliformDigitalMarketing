@@ -210,7 +210,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
             >
               <span
                 className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em]"
-                style={{ color: 'rgba(255,255,255,0.35)' }}
+                style={{ color: 'rgba(255,255,255,0.5)' }}
               >
                 <span
                   className="w-2 h-2 rounded-full"
@@ -253,7 +253,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
               <div>
                 <div
                   className="text-[10px] uppercase tracking-[0.3em] mb-2"
-                  style={{ color: 'rgba(255,255,255,0.25)' }}
+                  style={{ color: 'rgba(255,255,255,0.38)' }}
                 >
                   Client
                 </div>
@@ -262,7 +262,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
               <div>
                 <div
                   className="text-[10px] uppercase tracking-[0.3em] mb-2"
-                  style={{ color: 'rgba(255,255,255,0.25)' }}
+                  style={{ color: 'rgba(255,255,255,0.38)' }}
                 >
                   Year
                 </div>
@@ -271,7 +271,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
               <div className="col-span-2">
                 <div
                   className="text-[10px] uppercase tracking-[0.3em] mb-2"
-                  style={{ color: 'rgba(255,255,255,0.25)' }}
+                  style={{ color: 'rgba(255,255,255,0.38)' }}
                 >
                   Services
                 </div>
@@ -292,7 +292,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
         >
           <span
             className="text-[10px] uppercase tracking-[0.3em]"
-            style={{ color: 'rgba(255,255,255,0.2)' }}
+            style={{ color: 'rgba(255,255,255,0.32)' }}
           >
             Scroll
           </span>
@@ -376,7 +376,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
             <div className="flex items-center gap-6 mb-20">
               <span
                 className="text-[10px] uppercase tracking-[0.3em]"
-                style={{ color: 'rgba(255,255,255,0.25)' }}
+                style={{ color: 'rgba(255,255,255,0.38)' }}
               >
                 01
               </span>
@@ -390,7 +390,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
               />
               <span
                 className="text-[10px] uppercase tracking-[0.3em]"
-                style={{ color: 'rgba(255,255,255,0.25)' }}
+                style={{ color: 'rgba(255,255,255,0.38)' }}
               >
                 The Brief
               </span>
@@ -472,7 +472,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
             <div className="flex items-center gap-6 mb-20">
               <span
                 className="text-[10px] uppercase tracking-[0.3em]"
-                style={{ color: 'rgba(255,255,255,0.25)' }}
+                style={{ color: 'rgba(255,255,255,0.38)' }}
               >
                 02
               </span>
@@ -486,7 +486,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
               />
               <span
                 className="text-[10px] uppercase tracking-[0.3em]"
-                style={{ color: 'rgba(255,255,255,0.25)' }}
+                style={{ color: 'rgba(255,255,255,0.38)' }}
               >
                 Impact
               </span>
@@ -542,7 +542,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
                 {/* Label */}
                 <div
                   className="text-sm uppercase tracking-[0.2em] max-w-[200px] mx-auto"
-                  style={{ color: 'rgba(255,255,255,0.4)' }}
+                  style={{ color: 'rgba(255,255,255,0.55)' }}
                 >
                   {result.label}
                 </div>
@@ -566,7 +566,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 mb-4">
           <span
             className="text-[10px] uppercase tracking-[0.3em]"
-            style={{ color: 'rgba(255,255,255,0.25)' }}
+            style={{ color: 'rgba(255,255,255,0.38)' }}
           >
             Built With
           </span>
@@ -620,7 +620,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
                 <div className="text-sm font-medium">{study.testimonial.author}</div>
                 <div
                   className="text-xs uppercase tracking-[0.2em] mt-1"
-                  style={{ color: 'rgba(255,255,255,0.3)' }}
+                  style={{ color: 'rgba(255,255,255,0.42)' }}
                 >
                   {study.testimonial.company}
                 </div>
@@ -641,7 +641,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
             <div className="flex items-center gap-6 mb-16">
               <span
                 className="text-[10px] uppercase tracking-[0.3em]"
-                style={{ color: 'rgba(255,255,255,0.25)' }}
+                style={{ color: 'rgba(255,255,255,0.38)' }}
               >
                 03
               </span>
@@ -655,7 +655,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
               />
               <span
                 className="text-[10px] uppercase tracking-[0.3em]"
-                style={{ color: 'rgba(255,255,255,0.25)' }}
+                style={{ color: 'rgba(255,255,255,0.38)' }}
               >
                 Gallery
               </span>
@@ -717,7 +717,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
           <FadeSection>
             <span
               className="text-[10px] uppercase tracking-[0.3em] block mb-8"
-              style={{ color: 'rgba(255,255,255,0.25)' }}
+              style={{ color: 'rgba(255,255,255,0.38)' }}
             >
               Next Project?
             </span>

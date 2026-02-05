@@ -19,7 +19,7 @@ const caseStudies = {
     technologies: ['Next.js', 'React', 'Tailwind CSS', 'Google Ads API', 'MyCase API', 'Zapier'],
     images: [
       // Hero / “after” (new site)
-      '/projects/tmfwins-home.jpg',
+      '/case-studies/mcphillip/after/home-page-new.png',
       // “Before” screenshots (old site)
       '/case-studies/mcphillip/before/old-site-part-1.png',
       '/case-studies/mcphillip/before/old-site-part-2.png'
