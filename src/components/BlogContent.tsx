@@ -36,7 +36,7 @@ const blogPosts: BlogPost[] = [
     date: "Jan 2026",
     gradient: "from-red-600 to-red-500",
     stats: "5:1 ROI",
-    image: "/blog/marketing-roi.jpg", // Add this image to public/blog/
+    image: "/blog/marketing-roi.jpg", // legacy
     content: {
       intro: "Marketing budgets are under more scrutiny than ever. With 83% of marketing leaders now considering ROI demonstration as their top priority (up from 68% five years ago), the pressure is on to prove that every marketing dollar generates measurable returns.",
       keyPoints: [
@@ -117,7 +117,7 @@ const blogPosts: BlogPost[] = [
     date: "Jan 2026",
     gradient: "from-red-400 to-red-600",
     stats: "13x Returns",
-    image: "/blog/growth-marketing.jpg", // Add this image to public/blog/
+    image: "/blog/growth-marketing.jpg", // legacy
     content: {
       intro: "Traditional marketing focuses on acquisition. Growth marketing focuses on the entire customer lifecycle—from awareness through advocacy. By combining experimentation, data analytics, and rapid iteration, growth marketing creates scalable systems that compound over time. The results? Sustainable business growth without burning through cash on expensive ads.",
       keyPoints: [
@@ -148,6 +148,127 @@ const blogPosts: BlogPost[] = [
         "Focus on Customer Lifetime Value (CLV) metrics, not just initial acquisition cost"
       ],
       conclusion: "Growth marketing isn't about finding a single 'growth hack' that solves everything. It's about building systems that work together: email nurturing leads, content attracting organic traffic, referrals amplifying reach, and continuous optimization improving every touchpoint. While big companies can absorb the costs of failed campaigns, small businesses need the efficiency and sustainability that growth marketing provides. The businesses that master these fundamentals will thrive while competitors burn through budgets chasing the next shiny tactic."
+    }
+  },
+  {
+    id: 4,
+    title: "What to Do in the First 24 Hours After a Car Accident (Florida)",
+    excerpt: "A clean, simple checklist accident victims can follow — and a way for PI firms to turn panic into an organized, trackable intake flow.",
+    category: "PI Intake",
+    readTime: "6 min read",
+    date: "Feb 2026",
+    gradient: "from-red-600 to-red-700",
+    stats: "24 Hours",
+    image: "/blog/fl-car-accident.jpg",
+    content: {
+      intro: "If you’ve been in a crash, the next 24 hours matter — not just for your health, but for preserving the facts that insurance companies and defense attorneys rely on. This is a practical, plain-English checklist you can follow. (This is general information, not legal advice.)",
+      keyPoints: [
+        {
+          title: "Get safe + get medical care (don’t ‘wait and see’)",
+          description: "Move to safety if you can. Call 911 if anyone is hurt. If you feel pain, dizziness, numbness, or confusion, get checked out immediately. Gaps in care are one of the easiest ways for the insurance company to argue your injuries aren’t serious."
+        },
+        {
+          title: "Document the scene like you’re building a case file",
+          description: "Take photos/video of vehicles, plates, damage angles, skid marks, traffic signals, weather, and your visible injuries. Get names + numbers of witnesses. If you can, capture a short video walking through what happened while it’s fresh."
+        },
+        {
+          title: "Be careful with statements",
+          description: "You can be polite without admitting fault. Avoid guessing, apologizing, or speculating. If an adjuster calls quickly asking for a recorded statement, you can decline and say you’ll follow up."
+        },
+        {
+          title: "Start an ‘injury timeline’ the same day",
+          description: "Write down symptoms, pain levels, what you can’t do, and appointments. Save receipts and time missed from work. This is the backbone of a clean demand package later."
+        }
+      ],
+      actionable: [
+        "Save the other driver’s info + insurance details",
+        "Take 20+ photos (wide + close), plus a 30–60 sec video",
+        "Get witness contact info (even 1 is huge)",
+        "Get checked out the same day if symptoms exist",
+        "Don’t post about the crash on social media",
+        "Create a folder: Police report, photos, bills, notes"
+      ],
+      conclusion: "For PI firms, this is also a marketing opportunity: a simple ‘24-hour checklist’ lead magnet + a clean intake workflow (text + email automation + call follow-up) can increase qualified consults and reduce lead leakage. If you want, we’ll build the funnel and tracking so you know exactly where signed cases come from."
+    }
+  },
+  {
+    id: 5,
+    title: "7 Mistakes That Can Reduce Your Injury Settlement",
+    excerpt: "Most case value leakage isn’t ‘legal’ — it’s behavior, documentation, and gaps. Here are the seven avoidable mistakes we see over and over.",
+    category: "PI Education",
+    readTime: "7 min read",
+    date: "Feb 2026",
+    gradient: "from-red-500 to-red-700",
+    stats: "7 Mistakes",
+    image: "/blog/fl-checklist-notes.jpg",
+    content: {
+      intro: "Insurance companies look for reasons to pay less. Many of the biggest settlement reducers are preventable — especially early on. This is general info, not legal advice.",
+      keyPoints: [
+        {
+          title: "Waiting too long to get medical care",
+          description: "Delays and gaps give the defense a clean argument: ‘The injuries weren’t from the crash.’ Consistent treatment and documentation matter."
+        },
+        {
+          title: "Giving a recorded statement too early",
+          description: "Recorded statements are designed to lock you into details before you’ve had time to process and before your injuries are fully known."
+        },
+        {
+          title: "Posting on social media",
+          description: "A single photo or comment can be taken out of context to suggest you’re not injured. The safest move is to pause public posting."
+        },
+        {
+          title: "Not preserving evidence",
+          description: "Photos, witness info, vehicle condition, and receipts disappear fast. A good case file makes negotiation easier and faster."
+        }
+      ],
+      actionable: [
+        "Treat promptly and keep appointments",
+        "Keep an injury journal (daily 2 minutes)",
+        "Don’t discuss the case publicly (including social)",
+        "Save all bills/receipts + mileage + time missed",
+        "If you’re unsure, ask before signing anything"
+      ],
+      conclusion: "For firms: content like this works best as a short blog + GMB post + Facebook checklist. Pair it with a ‘Free Teardown’ offer and a phone-first intake form to turn attention into booked consults."
+    }
+  },
+  {
+    id: 6,
+    title: "Should You Talk to the Insurance Adjuster? (What to Say / Not Say)",
+    excerpt: "A practical script for accident victims — and how PI firms can use it to filter bad leads while capturing good ones.",
+    category: "PI Intake",
+    readTime: "6 min read",
+    date: "Feb 2026",
+    gradient: "from-red-400 to-red-600",
+    stats: "Script",
+    image: "/blog/fl-insurance-phone.jpg",
+    content: {
+      intro: "Adjusters are trained to minimize payouts. You can communicate without hurting your claim — the key is staying factual and not volunteering speculation. This is general information, not legal advice.",
+      keyPoints: [
+        {
+          title: "What’s usually safe to share",
+          description: "Basic contact info, vehicle info, where/when the crash happened, and how to reach you. Keep it short and factual."
+        },
+        {
+          title: "What to avoid",
+          description: "Avoid guesses, blame, timelines you’re uncertain about, and minimizing language (‘I’m fine,’ ‘just sore’). Avoid agreeing to a recorded statement on the spot."
+        },
+        {
+          title: "A simple script you can use",
+          description: "‘I’m still getting evaluated medically and I’m not ready to give a recorded statement. Please send any questions in writing and I’ll respond after I’ve reviewed everything.’"
+        },
+        {
+          title: "Why a clean intake process matters",
+          description: "The best firms make it easy to call, text, or submit a quick form. The faster the follow-up, the fewer leads leak to competitors."
+        }
+      ],
+      actionable: [
+        "Keep calls short and factual",
+        "Don’t agree to a recorded statement on the spot",
+        "Don’t sign releases without understanding them",
+        "Document every call (date/time/name/summary)",
+        "If you’re hurt, get medical care + keep records"
+      ],
+      conclusion: "If you want, we’ll turn this into a lead magnet + automated follow-up (text/email) so your firm books more qualified consults — and you can prove ROI with tracking down to signed cases."
     }
   }
 ];
@@ -333,13 +454,13 @@ export default function BlogContent() {
           {/* CTA */}
           <div className="mt-16 p-10 rounded-2xl bg-gradient-to-r from-red-950/50 to-red-900/50 border border-red-500/30 backdrop-blur-md text-center">
             <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-red-400 to-red-300 bg-clip-text text-transparent">
-              Ready to Transform Your Marketing?
+              Ready to Fix Your Lead Quality?
             </h3>
             <p className="text-gray-300 mb-6 text-lg">
-              Let&rsquo;s discuss how data-driven growth strategies can accelerate your business results.
+              Let&rsquo;s diagnose your intake + marketing funnel and show you exactly what to fix to get more signed cases.
             </p>
             <Link href="/#contact" className="inline-block px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/50">
-              Schedule a Strategy Call
+              GET A FREE TEARDOWN
             </Link>
           </div>
         </article>

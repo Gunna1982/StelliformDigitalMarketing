@@ -13,11 +13,11 @@ export default function Hero2() {
         strategy="lazyOnload"
       />
 
-      <div className="relative min-h-screen bg-[#020101] text-white overflow-hidden font-sans selection:bg-red-500/30 selection:text-red-100">
+      <div className="relative min-h-screen bg-transparent text-white overflow-hidden font-sans selection:bg-red-500/30 selection:text-red-100">
         <style jsx global>{`
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
           
-          body { font-family: 'Inter', sans-serif; background: #020101; }
+          body { font-family: 'Inter', sans-serif; }
 
           /* Animation: Embers rising */
           @keyframes rise {
@@ -129,18 +129,9 @@ export default function Hero2() {
           }
         `}</style>
 
-        {/* Background Elements */}
-        <div className="fixed inset-0 z-[-1] bg-grid pointer-events-none"></div>
-        <div 
-          className="fixed inset-0 z-[-1] opacity-40" 
-          style={{
-            backgroundImage: 'radial-gradient(1px 1px at 10% 10%, white, transparent), radial-gradient(1px 1px at 50% 50%, white, transparent), radial-gradient(2px 2px at 80% 20%, white, transparent)',
-            backgroundSize: '400px 400px'
-          }}
-        ></div>
 
         {/* MAIN SOLAR SYSTEM */}
-        <div className="fixed inset-0 z-0 pointer-events-none flex justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0 pointer-events-none flex justify-center overflow-hidden">
           {/* Sun Surface - Reduced by 25% */}
           <div className="sun-surface absolute -bottom-[350px] left-1/2 -translate-x-1/2 w-[187.5vw] h-[450px] rounded-[50%_50%_0_0] blur-[10px] z-0 opacity-90"></div>
           
@@ -185,18 +176,18 @@ export default function Hero2() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md">
                 {/* @ts-expect-error iconify-icon custom element */}
                 <iconify-icon icon="solar:bolt-linear" class="text-red-400 text-sm"></iconify-icon>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-red-100">Data-Driven Growth Marketing</span>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-red-100">Local Law Firm Lead Gen</span>
               </div>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-white leading-[0.95] mb-6">
-                MARKETING THAT <br />
-                <span className="text-neutral-500">DELIVERS</span> <br />
-                MEASURABLE <br />
-                <span className="text-gradient">RESULTS.</span>
+                MORE CONSULTS <br />
+                FOR <span className="text-neutral-500">LOCAL</span> <br />
+                LAW FIRMS—<br />
+                <span className="text-gradient">FAST.</span>
               </h1>
 
               <p className="text-neutral-400 text-base leading-relaxed max-w-md mb-8">
-                Stop wasting budget on guesswork. We build data-driven marketing systems that deliver measurable ROI and sustainable growth for your business.
+                We build the landing page + tracking + intake follow‑up system that turns clicks into booked consults. Perfect for local firms (PI, family, immigration) that want measurable leads.
               </p>
 
               {/* Updated CTAs */}
@@ -206,18 +197,18 @@ export default function Hero2() {
                     href="/#contact"
                     className="h-12 px-8 rounded-full bg-gradient-to-b from-red-500 to-red-700 text-white text-sm font-semibold shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)] hover:scale-105 transition-all border border-red-400/50 flex items-center justify-center"
                   >
-                    Get Your Free Marketing Audit
+                    Get a Free 10‑Min Firm Teardown
                   </Link>
                   <Link
                     href="/#work"
-                    className="h-12 px-8 rounded-full bg-white/5 backdrop-blur-md border border-white/20 text-white text-sm font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+                    className="hidden sm:flex h-12 px-8 rounded-full bg-white/5 backdrop-blur-md border border-white/20 text-white text-sm font-medium hover:bg-white/10 transition-all items-center justify-center gap-2"
                   >
                     View Case Studies
                     <span>→</span>
                   </Link>
                 </div>
                 <p className="text-xs text-neutral-500 ml-1">
-                  30-min strategy session • Discover what&apos;s costing you leads • No obligation
+                  Quick video teardown • Find what’s leaking consults • No obligation
                 </p>
               </div>
             </div>
@@ -232,7 +223,7 @@ export default function Hero2() {
                   {/* Top Label */}
                   <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-white/5 border border-white/5 mb-6">
                     <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-                    <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wide">Live Results</span>
+                    <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wide">Viral Results</span>
                   </div>
 
                   {/* Content */}
@@ -291,8 +282,8 @@ export default function Hero2() {
           </div>
         </main>
 
-        {/* Bottom System Bar */}
-        <div className="fixed bottom-6 left-6 right-6 z-50">
+        {/* Bottom System Bar (hide on mobile) */}
+        <div className="fixed bottom-6 left-6 right-6 z-50 hidden sm:block">
           <div className="max-w-5xl mx-auto">
             <div className="glass-panel rounded-xl px-4 py-3 flex items-center justify-between gap-4">
               

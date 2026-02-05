@@ -7,20 +7,48 @@ type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
-    project: '',
-    message: ''
+    phone: '',
+    preferredContactMethod: '',
+    bestTimeToContact: '',
+    details: ''
   });
 
   const [focused, setFocused] = useState<string | null>(null);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle');
   const [errorMessage, setErrorMessage] = useState<string>('');
 
+  const isValidEmail = (email: string) => {
+    // Simple, pragmatic email check (catches most obvious typos)
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
+  };
+
+  const isValidPhone = (phone: string) => {
+    // Accepts US-style numbers with optional punctuation.
+    // Requires at least 10 digits.
+    const digits = phone.replace(/\D/g, '');
+    return digits.length >= 10;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitStatus('submitting');
     setErrorMessage('');
+
+    if (!isValidEmail(formData.email)) {
+      setSubmitStatus('error');
+      setErrorMessage('Please enter a valid email address.');
+      return;
+    }
+
+    if (!isValidPhone(formData.phone)) {
+      setSubmitStatus('error');
+      setErrorMessage('Please enter a valid phone number (10+ digits).');
+      return;
+    }
+
+    setSubmitStatus('submitting');
 
     try {
       const response = await fetch('/api/contact', {
@@ -36,7 +64,15 @@ export default function ContactForm() {
       }
 
       setSubmitStatus('success');
-      setFormData({ name: '', email: '', project: '', message: '' });
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        preferredContactMethod: '',
+        bestTimeToContact: '',
+        details: ''
+      });
     } catch (error) {
       setSubmitStatus('error');
       setErrorMessage(error instanceof Error ? error.message : 'Something went wrong');
@@ -53,12 +89,12 @@ export default function ContactForm() {
           viewport={{ once: true }}
         >
           <h2 className="text-5xl font-bold mb-4">
-            Ready to launch
+            Get a free
             <br />
-            your <span className="gradient-text">vision?</span>
+            firm <span className="gradient-text">teardown</span>
           </h2>
           <p className="text-gray-400 mb-8">
-            I work with brands that believe in quality design. Let&rsquo;s build something amazing together.
+            Share your info and we&rsquo;ll send a quick Loom video showing what to fix to get more consult requests.
           </p>
         </motion.div>
 
@@ -72,33 +108,48 @@ export default function ContactForm() {
         >
           <div className="grid grid-cols-2 gap-4">
             <motion.div
-              animate={{
-                scale: focused === 'name' ? 1.02 : 1
-              }}
+              animate={{ scale: focused === 'firstName' ? 1.02 : 1 }}
               transition={{ duration: 0.2 }}
             >
               <input
                 type="text"
-                placeholder="NAME"
+                placeholder="FIRST NAME"
                 required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                onFocus={() => setFocused('name')}
+                value={formData.firstName}
+                onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                onFocus={() => setFocused('firstName')}
                 onBlur={() => setFocused(null)}
                 className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-red-500 focus:bg-red-500/5 transition-all"
               />
             </motion.div>
-            
+
             <motion.div
-              animate={{
-                scale: focused === 'email' ? 1.02 : 1
-              }}
+              animate={{ scale: focused === 'lastName' ? 1.02 : 1 }}
+              transition={{ duration: 0.2 }}
+            >
+              <input
+                type="text"
+                placeholder="LAST NAME"
+                required
+                value={formData.lastName}
+                onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                onFocus={() => setFocused('lastName')}
+                onBlur={() => setFocused(null)}
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-red-500 focus:bg-red-500/5 transition-all"
+              />
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <motion.div
+              animate={{ scale: focused === 'email' ? 1.02 : 1 }}
               transition={{ duration: 0.2 }}
             >
               <input
                 type="email"
                 placeholder="EMAIL"
                 required
+                autoComplete="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 onFocus={() => setFocused('email')}
@@ -106,37 +157,91 @@ export default function ContactForm() {
                 className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-red-500 focus:bg-red-500/5 transition-all"
               />
             </motion.div>
+
+            <motion.div
+              animate={{ scale: focused === 'phone' ? 1.02 : 1 }}
+              transition={{ duration: 0.2 }}
+            >
+              <input
+                type="tel"
+                inputMode="tel"
+                placeholder="PHONE"
+                required
+                autoComplete="tel"
+                pattern="[0-9\s\-\(\)\+\.]{10,}"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                onFocus={() => setFocused('phone')}
+                onBlur={() => setFocused(null)}
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-red-500 focus:bg-red-500/5 transition-all"
+              />
+            </motion.div>
           </div>
 
-          <motion.div
-            animate={{
-              scale: focused === 'project' ? 1.02 : 1
-            }}
-            transition={{ duration: 0.2 }}
-          >
-            <input
-              type="text"
-              placeholder="PROJECT TYPE / BUDGET"
-              value={formData.project}
-              onChange={(e) => setFormData({ ...formData, project: e.target.value })}
-              onFocus={() => setFocused('project')}
-              onBlur={() => setFocused(null)}
-              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-red-500 focus:bg-red-500/5 transition-all"
-            />
-          </motion.div>
+          {/* Step 2: preferred contact method (appears after phone entered) */}
+          {formData.phone.trim().length >= 7 && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25 }}
+            >
+              <label className="block text-xs text-gray-400 mb-2">PREFERRED CONTACT METHOD</label>
+              <div className="grid grid-cols-3 gap-3">
+                {['Call', 'Text', 'Email'].map((m) => (
+                  <button
+                    key={m}
+                    type="button"
+                    onClick={() => setFormData({ ...formData, preferredContactMethod: m })}
+                    className={`py-3 rounded-lg border text-sm transition-all bg-white/5 hover:bg-white/10 ${
+                      formData.preferredContactMethod === m
+                        ? 'border-red-500 text-white'
+                        : 'border-white/10 text-gray-300'
+                    }`}
+                  >
+                    {m}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Step 3: best time (appears after method selected) */}
+          {formData.preferredContactMethod && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25 }}
+            >
+              <label className="block text-xs text-gray-400 mb-2">BEST TIME TO CONTACT YOU</label>
+              <select
+                required
+                value={formData.bestTimeToContact}
+                onChange={(e) => setFormData({ ...formData, bestTimeToContact: e.target.value })}
+                onFocus={() => setFocused('bestTimeToContact')}
+                onBlur={() => setFocused(null)}
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-red-500 focus:bg-red-500/5 transition-all"
+              >
+                <option value="" disabled>
+                  Select…
+                </option>
+                <option value="Morning (9am–12pm)">Morning (9am–12pm)</option>
+                <option value="Afternoon (12pm–5pm)">Afternoon (12pm–5pm)</option>
+                <option value="Evening (5pm–8pm)">Evening (5pm–8pm)</option>
+                <option value="Anytime">Anytime</option>
+              </select>
+            </motion.div>
+          )}
 
           <motion.div
-            animate={{
-              scale: focused === 'message' ? 1.02 : 1
-            }}
+            animate={{ scale: focused === 'details' ? 1.02 : 1 }}
             transition={{ duration: 0.2 }}
           >
             <textarea
               rows={4}
-              placeholder="ANYTHING WE SHOULD KNOW?"
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              onFocus={() => setFocused('message')}
+              placeholder="BRIEFLY TELL US ABOUT YOUR CASE"
+              value={formData.details}
+              onChange={(e) => setFormData({ ...formData, details: e.target.value })}
+              onFocus={() => setFocused('details')}
               onBlur={() => setFocused(null)}
               className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-red-500 focus:bg-red-500/5 transition-all resize-none"
             />
@@ -170,7 +275,7 @@ export default function ContactForm() {
                   submitStatus === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''
                 }`}
               >
-                {submitStatus === 'submitting' ? 'Sending...' : 'Start Conversation →'}
+                {submitStatus === 'submitting' ? 'Sending...' : 'Request Free Teardown →'}
               </motion.button>
             </>
           )}

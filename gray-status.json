@@ -1,0 +1,15 @@
+{
+  "updatedAt": "2026-02-04T05:04:51.305Z",
+  "branch": "gray/homepage-improvements",
+  "lastCommit": "292708d feat: update footer and navigation links, enhance pricing details, and add FAQ section",
+  "tasks": [
+    {
+      "title": "Homepage improvements (offer, proof, CTA)",
+      "status": "doing"
+    },
+    {
+      "title": "Add lightweight /gray-status dashboard",
+      "status": "doing"
+    }
+  ]
+}

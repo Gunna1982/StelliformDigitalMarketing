@@ -1,6 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import SpaceBackdrop from '@/components/SpaceBackdrop';
 
 const footerLinks = {
   map: [
@@ -16,20 +18,22 @@ const footerLinks = {
     { label: 'CONTACT', href: '/#contact' }
   ],
   legal: [
-    { label: 'PRIVACY POLICY', href: '/' },
-    { label: 'TERMS & CONDITIONS', href: '/' }
+    { label: 'PRIVACY POLICY', href: '/privacy-policy' },
+    { label: 'TERMS & CONDITIONS', href: '/terms-of-service' }
   ]
 };
 
 const socialLinks = [
-  { icon: 'instagram', href: '#' },
-  { icon: 'twitter', href: '#' },
-  { icon: 'pinterest', href: '#' }
+  { icon: 'facebook', href: 'https://www.facebook.com/Stelliform' },
+  { icon: 'linkedin', href: 'https://www.linkedin.com/company/stelliform-digital-marketing/' },
+  { icon: 'instagram', href: '#' }
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-800 mt-32 pt-16 pb-8 px-6">
+    <footer className="relative overflow-hidden border-t border-white/10 mt-32 pt-16 pb-8 px-6">
+      {/* Match hero vibe (+20% intensity already applied in SpaceBackdrop) */}
+      <SpaceBackdrop className="opacity-100" />
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
@@ -56,6 +60,9 @@ export default function Footer() {
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.1, borderColor: 'rgb(239, 68, 68)' }}
                   className="w-10 h-10 border border-gray-800 rounded-lg flex items-center justify-center transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.icon}
                 >
                   <span className="text-sm">{social.icon[0].toUpperCase()}</span>
                 </motion.a>
@@ -161,9 +168,9 @@ export default function Footer() {
           viewport={{ once: true }}
           className="text-right mt-8"
         >
-          <a href="/#contact" className="text-sm hover:text-red-400 transition inline-flex items-center gap-2">
+          <Link href="/#contact" className="text-sm hover:text-red-400 transition inline-flex items-center gap-2">
             Start Conversation →
-          </a>
+          </Link>
         </motion.div>
       </div>
     </footer>

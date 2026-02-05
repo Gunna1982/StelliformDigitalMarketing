@@ -9,13 +9,13 @@ import Link from 'next/link';
 const projects = [
   {
     id: 1,
-    title: 'LOKA MD',
-    slug: 'loka-md',
-    category: 'Membership Organization',
+    title: 'The McPhillip Firm',
+    slug: 'mcphillip-firm',
+    category: 'Personal Injury Lead Funnel',
     description:
-      'Redesigned from an informational site into a membership-focused platform uniting three generations — elders (tradition & language), adults (leadership & mentorship), and youth (innovation & technology).',
-    image: '/projects/LokaMD2.jpg', // new redesign (you provided)
-    // Accent: emerald for "growth/community"
+      'High-converting PI funnel built to turn visitors into consult requests (clear positioning, strong CTAs, and intake-first UX).',
+    image: '/projects/tmfwins-home.jpg',
+    // Accent: emerald (match LOKA vibe)
     accents: {
       card: 'from-emerald-700 to-emerald-600',
       tag: 'bg-emerald-500/10 border-emerald-400/40 text-emerald-200 hover:border-emerald-300/70',
@@ -23,57 +23,11 @@ const projects = [
       outline: 'hover:border-emerald-500/60',
       glow: 'bg-gradient-to-br from-emerald-700 to-emerald-500',
     },
-    tags: ['Next.js', 'Membership', 'CRM-ready', 'Community UX'],
-    link: '/case-study/loka-md',
-    metrics: {
-      increase: '+45%',
-      metric: 'Projected Membership Growth',
-    },
-  },
-  {
-    id: 2,
-    title: 'ACH Tax Services',
-    slug: 'ach-tax-services',
-    category: 'Tax Services Platform',
-    description:
-      'Client intake system with PDF generation and automated workflows to reduce manual effort and increase completion rate.',
-    image: '@/projects/ach-tax.jpg',
-    // Accent: indigo for “trust/operations”
-    accents: {
-      card: 'from-indigo-700 to-indigo-600',
-      tag: 'bg-indigo-500/10 border-indigo-400/40 text-indigo-200 hover:border-indigo-300/70',
-      metric: 'from-indigo-500 to-indigo-400',
-      outline: 'hover:border-indigo-500/60',
-      glow: 'bg-gradient-to-br from-indigo-700 to-indigo-500',
-    },
-    tags: ['PDF Generation', 'Automation', 'Custom Forms', 'Next.js'],
-    link: '/case-study/ach-tax-services',
-    metrics: {
-      increase: '+68%',
-      metric: 'Intake Completion Rate',
-    },
-  },
-  {
-    id: 3,
-    title: 'The McPhillip Firm',
-    slug: 'mcphillip-firm',
-    category: 'Legal Website',
-    description:
-      'High-converting legal site with paid media and CRM integration to scale qualified leads.',
-    image: '@/projects/mcphillip.jpg',
-    // Accent: amber for “action/results”
-    accents: {
-      card: 'from-amber-600 to-amber-500',
-      tag: 'bg-amber-500/10 border-amber-400/40 text-amber-200 hover:border-amber-300/70',
-      metric: 'from-amber-400 to-amber-300',
-      outline: 'hover:border-amber-500/60',
-      glow: 'bg-gradient-to-br from-amber-600 to-amber-400',
-    },
-    tags: ['Next.js', 'Google Ads', 'Lead Gen', 'CRM Integration'],
+    tags: ['Next.js', 'Conversion UX', 'Intake Funnel', 'Tracking-ready'],
     link: '/case-study/mcphillip-firm',
     metrics: {
-      increase: '+156%',
-      metric: 'Qualified Leads',
+      increase: 'TMFWINS.COM',
+      metric: 'Live funnel',
     },
   },
 ];
@@ -83,6 +37,7 @@ export default function Portfolio() {
 
   return (
     <section id="work" className="max-w-7xl mx-auto py-20 px-6">
+      <div className="rounded-3xl bg-white/[0.03] border border-white/10 p-6 md:p-10">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -125,7 +80,7 @@ export default function Portfolio() {
           >
             {/* Internal link to case study only (do not leave website) */}
             <Link href={project.link} className="block">
-              <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-950 to-black border border-white/10 ${project.accents.outline} transition-all duration-500`}>
+              <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0B1220] to-[#070A10] border border-white/10 ${project.accents.outline} transition-all duration-500`}>
                 <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
                   {/* Left: Content */}
                   <div className="flex flex-col justify-center">
@@ -198,20 +153,19 @@ export default function Portfolio() {
                         }}
                         className={`absolute inset-0 ${project.accents.glow} blur-3xl -z-10`}
                       />
-                      {/* If you have screenshots, uncomment Image */}
-                      {/* <Image
+                      <Image
                         src={project.image}
                         alt={project.title}
                         fill
                         priority={index === 0}
                         className="object-cover"
-                      /> */}
-                      {/* Placeholder gradient backdrop + dark overlay to keep text readable */}
-                      <div className={`w-full h-full bg-gradient-to-br ${project.accents.card} opacity-30`} />
+                      />
+                      {/* Dark overlay to keep text readable */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
                       <motion.div
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: hoveredId === project.id ? 1 : 0.6 }}
-                        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"
+                        animate={{ opacity: hoveredId === project.id ? 1 : 0.75 }}
+                        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
                       />
                     </motion.div>
                   </div>
@@ -220,6 +174,8 @@ export default function Portfolio() {
             </Link>
           </motion.div>
         ))}
+      </div>
+
       </div>
 
       {/* CTA at bottom (no hash link; smooth scroll) */}

@@ -86,8 +86,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function CaseStudyPage({ params }: { params: { slug: string } }) {
-  const study = caseStudies[params.slug as keyof typeof caseStudies];
+export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const study = caseStudies[slug as keyof typeof caseStudies];
 
   if (!study) {
     notFound();

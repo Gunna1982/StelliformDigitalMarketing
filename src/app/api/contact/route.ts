@@ -6,10 +6,20 @@ export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
 interface ContactFormData {
-  name: string;
+  // New structured fields (preferred)
+  firstName?: string;
+  lastName?: string;
+  phone?: string;
+  preferredContactMethod?: string;
+  bestTimeToContact?: string;
+  details?: string;
+
+  // Back-compat (older form)
+  name?: string;
   email: string;
   project?: string;
   message?: string;
+
   // Attribution fields (optional, can be added from client)
   source?: string;
   medium?: string;
@@ -25,14 +35,17 @@ export async function POST(request: Request) {
     // Parse request body
     const body: ContactFormData = await request.json();
 
+    const fullName = (body.name || `${body.firstName ?? ''} ${body.lastName ?? ''}`.trim()).trim();
+
     console.log(`[${timestamp}] [CONTACT] Received submission:`, {
-      name: body.name,
+      name: fullName,
       email: body.email,
-      project: body.project
+      phone: body.phone,
+      preferredContactMethod: body.preferredContactMethod
     });
 
     // Validate required fields
-    if (!body.name || !body.email) {
+    if (!fullName || !body.email) {
       return NextResponse.json(
         { ok: false, error: 'Name and email are required' },
         { status: 400 }
@@ -56,12 +69,21 @@ export async function POST(request: Request) {
     const referer = request.headers.get('referer') || undefined;
 
     // Create lead in database
+    const structuredMessageParts = [
+      body.phone ? `Phone: ${body.phone}` : null,
+      body.preferredContactMethod ? `Preferred contact: ${body.preferredContactMethod}` : null,
+      body.bestTimeToContact ? `Best time: ${body.bestTimeToContact}` : null,
+      body.details ? `Details: ${body.details}` : null,
+      body.message ? `Message: ${body.message}` : null,
+    ].filter(Boolean);
+
     const lead = await prisma.lead.create({
       data: {
-        name: body.name.trim(),
+        name: fullName,
         email: body.email.toLowerCase().trim(),
-        project: body.project?.trim() || null,
-        message: body.message?.trim() || null,
+        // Reuse existing columns (no migration needed)
+        project: (body.project || body.preferredContactMethod || 'Free teardown request').trim(),
+        message: structuredMessageParts.length ? structuredMessageParts.join('\n') : null,
         source: body.source || 'website',
         medium: body.medium || 'contact_form',
         campaign: body.campaign || null,

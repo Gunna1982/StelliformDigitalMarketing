@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const STORAGE_KEY = 'stelliform_exit_popup_dismissed';
+const STORAGE_KEY = 'stelliform_exit_popup_dismissed_v2';
 const DISMISS_DURATION_DAYS = 7; // Don't show again for 7 days after dismissal
 
 export default function ExitIntentPopup() {
@@ -68,19 +68,19 @@ export default function ExitIntentPopup() {
       }
     };
 
-    // Mobile fallback: Show after 45 seconds on page
+    // Mobile fallback: Show after 25 seconds on page
     const mobileTimer = setTimeout(() => {
       if (window.innerWidth < 768) {
         setIsVisible(true);
       }
-    }, 45000);
+    }, 25000);
 
-    // Scroll-based trigger for mobile: 70% scroll depth
+    // Scroll-based trigger for mobile: 55% scroll depth
     const handleScroll = () => {
       if (window.innerWidth < 768) {
         const scrollPercentage =
           (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-        if (scrollPercentage > 70) {
+        if (scrollPercentage > 55) {
           setIsVisible(true);
           window.removeEventListener('scroll', handleScroll);
         }
@@ -145,8 +145,17 @@ export default function ExitIntentPopup() {
             <div className="relative bg-gradient-to-br from-gray-900 via-gray-900 to-black border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl">
               {/* Close button */}
               <button
-                onClick={handleClose}
-                className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors"
+                onPointerDown={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleClose();
+                }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleClose();
+                }}
+                className="absolute top-4 right-4 z-10 text-gray-500 hover:text-white transition-colors"
                 aria-label="Close popup"
               >
                 <svg
@@ -166,8 +175,8 @@ export default function ExitIntentPopup() {
               </button>
 
               {/* Decorative glow */}
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-red-500/20 rounded-full blur-3xl" />
-              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-red-600/10 rounded-full blur-3xl" />
+              <div className="pointer-events-none absolute -top-20 -right-20 w-40 h-40 bg-red-500/20 rounded-full blur-3xl" />
+              <div className="pointer-events-none absolute -bottom-20 -left-20 w-40 h-40 bg-red-600/10 rounded-full blur-3xl" />
 
               {!isSubmitted ? (
                 <>
@@ -179,22 +188,22 @@ export default function ExitIntentPopup() {
                   {/* Heading */}
                   <h3 className="text-3xl md:text-4xl font-bold mb-3">
                     Wait! Get Your{' '}
-                    <span className="gradient-text">Free Website Audit</span>
+                    <span className="gradient-text">FREE TEARDOWN</span>
                   </h3>
 
                   {/* Subheading */}
                   <p className="text-gray-400 mb-6">
-                    Before you go, let us analyze your website and show you exactly
-                    how to improve conversions, SEO, and performance.
+                    Before you go, we’ll record a quick teardown and show you exactly
+                    what to fix to get more qualified leads.
                   </p>
 
                   {/* Benefits */}
                   <ul className="space-y-2 mb-6">
                     {[
-                      'SEO & Performance Analysis',
-                      'Conversion Optimization Tips',
-                      'Competitor Comparison',
-                      'Actionable Recommendations',
+                      'Lead quality fixes (filter wrong-case inquiries)',
+                      'Conversion improvements (above-the-fold + CTA)',
+                      'Tracking checklist (no lost leads)',
+                      '3 quick wins you can implement today',
                     ].map((benefit) => (
                       <li key={benefit} className="flex items-center gap-2 text-sm text-gray-300">
                         <svg
@@ -269,7 +278,7 @@ export default function ExitIntentPopup() {
                           Sending...
                         </span>
                       ) : (
-                        'Get My Free Audit'
+                        'GET MY FREE TEARDOWN'
                       )}
                     </motion.button>
                   </form>
@@ -303,7 +312,7 @@ export default function ExitIntentPopup() {
                   </div>
                   <h3 className="text-2xl font-bold mb-2">You&apos;re All Set!</h3>
                   <p className="text-gray-400">
-                    We&apos;ll send your free audit within 24-48 hours.
+                    We&apos;ll send your free teardown within 24-48 hours.
                   </p>
                 </motion.div>
               )}

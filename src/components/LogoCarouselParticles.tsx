@@ -3,10 +3,15 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const clients = [
-  { name: 'ACH Tax Management', shortName: 'ACH Tax' },
-  { name: 'The McPhillip Law Firm', shortName: 'McPhillip Law' },
-  { name: 'LOKA', subtitle: 'League of Korean Americans' },
+type Client = {
+  name: string;
+  shortName: string;
+  subtitle?: string;
+};
+
+const clients: Client[] = [
+  { name: 'ACH Management', shortName: 'ACH Management' },
+  { name: 'The McPhillip Firm', shortName: 'The McPhillip Firm' },
 ];
 
 type ParticleData = {

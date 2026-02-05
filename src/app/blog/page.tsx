@@ -2,21 +2,28 @@ import BlogContent from '@/components/BlogContent';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog - Stelliform Digital | Growth Marketing Insights',
-  description: 'Data-driven strategies, proven tactics, and actionable insights to accelerate your business growth. Learn about marketing ROI, data-driven marketing, and growth strategies.',
-  keywords: ['growth marketing', 'marketing ROI', 'data-driven marketing', 'digital marketing', 'business growth', 'lead generation'],
+  title: 'Blog - Stelliform Digital | Personal Injury Lead Gen & Marketing',
+  description: 'Actionable, no-fluff marketing and intake insights for personal injury law firms: lead quality, conversion fixes, and what actually drives signed cases.',
+  keywords: [
+    'personal injury marketing',
+    'law firm lead generation',
+    'personal injury leads',
+    'intake optimization',
+    'PPC for lawyers',
+    'SEO for personal injury lawyers',
+  ],
   authors: [{ name: 'Stelliform Digital' }],
   openGraph: {
-    title: 'Blog - Stelliform Digital | Growth Marketing Insights',
-    description: 'Data-driven strategies, proven tactics, and actionable insights to accelerate your business growth.',
+    title: 'Stelliform Digital Blog | Personal Injury Lead Gen',
+    description: 'Marketing + intake insights built for PI law firms. Improve lead quality, conversion rate, and signed cases.',
     url: 'https://stelliformdigital.com/blog',
     siteName: 'Stelliform Digital',
     images: [
       {
-        url: 'https://stelliformdigital.com/og-blog.jpg', // Add this image to public/
+        url: 'https://stelliformdigital.com/og-blog.jpg',
         width: 1200,
         height: 630,
-        alt: 'Stelliform Digital Blog - Growth Marketing Insights',
+        alt: 'Stelliform Digital Blog - Personal Injury Lead Gen',
       },
     ],
     locale: 'en_US',
@@ -24,10 +31,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog - Stelliform Digital | Growth Marketing Insights',
-    description: 'Data-driven strategies, proven tactics, and actionable insights to accelerate your business growth.',
-    images: ['https://stelliformdigital.com/og-blog.jpg'], // Add this image to public/
-    creator: '@stelliformdigital', // Update with your actual Twitter handle
+    title: 'Stelliform Digital Blog | Personal Injury Lead Gen',
+    description: 'Marketing + intake insights built for PI law firms.',
+    images: ['https://stelliformdigital.com/og-blog.jpg'],
+    creator: '@stelliformdigital',
   },
   robots: {
     index: true,

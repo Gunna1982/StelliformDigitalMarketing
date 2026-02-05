@@ -101,7 +101,7 @@ const fragmentShader = `
  * - eases camera position to target
  * - keeps camera looking at center
  */
-function CameraParallax() {
+function CameraParallax({ enabled }: { enabled: boolean }) {
   const { camera } = useThree();
   const targetRef = useRef({ x: 0, y: 0 });
 
@@ -109,6 +109,8 @@ function CameraParallax() {
   const lookAt = useMemo(() => new THREE.Vector3(0, 0, 0), []);
 
   useEffect(() => {
+    if (!enabled) return;
+
     const onMove = (e: PointerEvent) => {
       const nx = (e.clientX / window.innerWidth) * 2 - 1;
       const ny = (e.clientY / window.innerHeight) * 2 - 1;
@@ -119,9 +121,11 @@ function CameraParallax() {
 
     window.addEventListener('pointermove', onMove, { passive: true });
     return () => window.removeEventListener('pointermove', onMove);
-  }, []);
+  }, [enabled]);
 
   useFrame(() => {
+    if (!enabled) return;
+
     const PARALLAX_X = 0.35;
     const PARALLAX_Y = 0.20;
 
@@ -134,11 +138,11 @@ function CameraParallax() {
   return null;
 }
 
-function Particles() {
+function Particles({ mobile }: { mobile: boolean }) {
   const pointsRef = useRef<THREE.Points>(null);
   const matRef = useRef<THREE.ShaderMaterial>(null);
 
-  const COUNT = 2000;
+  const COUNT = mobile ? 900 : 2000;
 
   const [positions] = useState<Float32Array>(() => makePositions(COUNT));
   const [twinkle] = useState<TwinkleData>(() => makeTwinkleData(COUNT));
@@ -155,8 +159,13 @@ function Particles() {
 
     const t = clock.getElapsedTime();
 
-    pts.rotation.y = t * 0.035;
-    pts.rotation.x = Math.sin(t * 0.07) * 0.1;
+    // Mobile: slow down motion (less distracting) + a bit less parallax feel.
+    const ry = mobile ? 0.012 : 0.035;
+    const rx = mobile ? 0.04 : 0.07;
+    const xAmp = mobile ? 0.06 : 0.1;
+
+    pts.rotation.y = t * ry;
+    pts.rotation.x = Math.sin(t * rx) * xAmp;
 
     mat.uniforms.uTime.value = t;
   });
@@ -190,13 +199,28 @@ function Particles() {
 }
 
 export default function ParticlesBackground() {
+  const [mobile, setMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(pointer: coarse)');
+    const update = () => setMobile(mq.matches || window.innerWidth < 768);
+    update();
+
+    mq.addEventListener?.('change', update);
+    window.addEventListener('resize', update, { passive: true });
+    return () => {
+      mq.removeEventListener?.('change', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
   return (
     // -z-10 ensures it sits behind everything.
     // pointer-events-none ensures it NEVER blocks clicks (pricing toggle, buttons, etc.)
-    <div className="fixed inset-0 -z-10 pointer-events-none opacity-30">
+    <div className={`fixed inset-0 -z-10 pointer-events-none ${mobile ? 'opacity-20' : 'opacity-30'}`}>
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }} gl={{ antialias: true, alpha: true }}>
-        <CameraParallax />
-        <Particles />
+        <CameraParallax enabled={!mobile} />
+        <Particles mobile={mobile} />
       </Canvas>
     </div>
   );

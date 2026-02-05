@@ -1,0 +1,3 @@
+Placeholder for TMF Wins thumbnail.
+
+TODO: add a screenshot at public/projects/tmfwins.jpg (1200x900 recommended).

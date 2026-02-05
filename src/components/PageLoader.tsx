@@ -4,13 +4,27 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 export default function PageLoader() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Simulate loading time
+    // Show loader only once per session (prevents flashes on internal navigation)
+    try {
+      const key = 'stelliform_loader_seen_v1';
+      const seen = sessionStorage.getItem(key);
+      if (seen) {
+        setLoading(false);
+        return;
+      }
+      sessionStorage.setItem(key, '1');
+    } catch {
+      // If sessionStorage is blocked, fall back to showing loader.
+    }
+
+    // For internal navigation, we want *no* loader flash. Keep this tiny.
+    setLoading(true);
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2500);
+    }, 350);
 
     return () => clearTimeout(timer);
   }, []);

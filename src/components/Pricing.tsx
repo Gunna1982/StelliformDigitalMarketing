@@ -28,58 +28,72 @@ const QUARTERLY_DISCOUNT = 0.1; // 10% off quarterly
 
 const plans: Plan[] = [
   {
-    name: 'Growth',
-    monthlyPrice: 7500,
-    description: 'Perfect for businesses ready to scale one channel profitably before expanding.',
-    compareTo: 'Replaces: $90K/year marketing hire + $15K in tools',
+    name: 'Local Law Launch',
+    monthlyPrice: 750,
+    description: 'For personal injury law firms that want a clean intake funnel and more consultation requests without hiring in-house.',
+    compareTo: 'Replaces: piecemeal freelancers + guessing what works',
     valueProps: [
-      '~50 hours of expert work per month',
-      'Avg. 3-5x ROI within first 90 days',
-      'Week-to-week flexibility',
+      'Conversion-ready landing page + tracking',
+      'Intake capture + fast follow-up flow',
+      'Simple weekly optimization loop',
     ],
     features: [
-      'Google Ads OR SEO (your choice): Full campaign setup, ongoing optimization, and monthly performance analysis',
-      '2-3 high-converting landing pages: Design, build, and A/B test until we hit 30%+ conversion improvement',
-      'Analytics & tracking: Complete setup (GA4, conversion tracking, phone call tracking) with weekly "what worked" reports',
-      'Lead qualification system: Forms, routing, and follow-up recommendations to close more deals',
-      'Weekly 30-min strategy calls + Slack/email access (replies within 24 hours)',
+      '1 high-converting PI landing page: copy + design + build (practice-area focused)',
+      'Analytics & tracking: GA4 + conversion tracking (forms/calls)',
+      'Intake capture: form + routing to email (option: CRM handoff)',
+      'Compliance-friendly copy framework (no guarantees/claims)',
+      'Weekly async Loom update (or 20-min check-in)',
     ],
   },
   {
-    name: 'Scale',
-    monthlyPrice: 15000,
-    description: 'For businesses ready to dominate multiple channels and move faster.',
-    popular: true,
-    badge: 'MOST POPULAR',
-    compareTo: 'Replaces: $180K/year in salaries + $25K in tools/software',
+    name: 'Weekly Content Pack',
+    monthlyPrice: 1200,
+    description: 'A weekly content kit you can post across Facebook, LinkedIn, your website, and Google Business Profile — written for PI firms.',
+    badge: 'CONTENT ENGINE',
     valueProps: [
-      '~100 hours of expert work per month',
-      'Multi-channel strategy = 2-3x more leads',
-      'Same-day turnaround on requests',
+      '1 website blog post per week (SEO-friendly)',
+      '1 LinkedIn post per week (partner-friendly tone)',
+      '2 Facebook posts per week (checklist/story hooks)',
+      '2 GMB posts per week (local intent + call CTA)',
     ],
     features: [
-      'Everything in Growth, PLUS:',
-      'Multi-channel execution: Google Ads + Facebook/Instagram + SEO + Email (we manage all simultaneously)',
-      '5-8 landing pages + ongoing iteration: New pages monthly, constant testing, conversion rate optimization',
-      'CRM setup & automation: Lead routing, follow-up sequences, pipeline tracking (MyCase, Go High Level, or similar)',
-      'Advanced reporting: Custom dashboards showing cost-per-lead by channel, lead quality scores, and revenue attribution',
-      'Bi-weekly strategy sessions + same-day Slack/email response',
-      'Priority access: Your requests go to the front of the queue',
+      'Topics mapped to PI intent (crash steps, adjuster scripts, FAQs)',
+      'Platform-specific rewrites (not copy-paste)',
+      'Simple publishing checklist + posting schedule',
+      'Optional: location variants (Miami/Orlando/Tampa) for local relevance',
+    ],
+  },
+  {
+    name: 'Scale (PI Growth)',
+    monthlyPrice: 3500,
+    popular: true,
+    badge: 'MOST POPULAR',
+    description: 'For PI firms ready to scale leads with tracking, landing pages, and an optimization loop that compounds.',
+    valueProps: [
+      'Landing pages + tracking + follow-up tuning',
+      'Lead quality improvements (filter junk)',
+      'Weekly iteration based on real conversion data',
+    ],
+    features: [
+      'Everything in Local Law Launch, PLUS:',
+      '2 additional landing pages over first 60 days (practice-area specific)',
+      'Call + form attribution recommendations (so you can scale winners)',
+      'Lead quality filter recommendations (routing, qualifiers, timing)',
+      'Weekly optimization sprint + performance notes',
     ],
   },
   {
     name: 'Custom',
     custom: true,
     startsAt: '10k',
-    description: 'For complex projects, full website builds, or aggressive multi-location growth.',
+    description: 'For complex projects, full website builds, or aggressive multi-location PI growth.',
     compareTo: 'Replaces: Full in-house marketing team ($250K+/year)',
     typical: [
-      'Complete website redesign + conversion-focused architecture (Next.js, mobile-first, sub-2s load times)',
-      'Multi-location SEO: Optimize for 3-10+ locations with local landing pages and Google Business Profile management',
-      'Full-funnel paid ads: Google + Meta + retargeting across 5+ campaigns with advanced audience segmentation',
-      'Enterprise CRM implementation: Full pipeline setup, automation, integrations, and team training',
-      'Custom reporting suite: Real-time dashboards tracking every lead source, conversion point, and revenue driver',
-      'Dedicated account team: Direct access to strategist, designer, and developer',
+      'Complete PI website redesign + conversion-focused architecture (mobile-first, sub-2s load times)',
+      'Multi-location SEO: Local landing pages + Google Business Profile content workflow',
+      'Full-funnel paid ads: Google + Meta + retargeting with strict lead-quality filters',
+      'CRM + intake ops: routing, follow-up sequences, pipeline tracking (MyCase / Filevine / GHL, etc.)',
+      'Custom reporting suite: track cost-per-consult + lead quality + attribution',
     ],
   },
 ];
@@ -112,7 +126,7 @@ export default function Pricing() {
         className="text-center mb-4"
       >
         <div className="inline-flex items-center gap-2 text-red-400 text-sm mb-4">
-          <span className="text-xl">💲</span> PRICING
+          <span className="text-xl">💲</span> START HERE
         </div>
       </motion.div>
 

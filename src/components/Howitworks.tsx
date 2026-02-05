@@ -52,9 +52,13 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="relative bg-[#020101] py-24 sm:py-32 overflow-hidden">
+    <section className="relative bg-transparent py-24 sm:py-32 overflow-hidden">
       {/* Background Grid */}
       <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
+      
+      {/* Animated Background Glow */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-[100px] pointer-events-none animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-[100px] pointer-events-none animate-pulse" style={{ animationDelay: '2s' }}></div>
       
       {/* Animated Background Glow */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-[100px] pointer-events-none animate-pulse"></div>
@@ -128,7 +132,7 @@ export default function HowItWorks() {
                       href="/#contact"
                       className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-b from-red-500 to-red-700 text-white text-sm font-semibold shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)] hover:scale-105 transition-all border border-red-400/50"
                     >
-                      Get Your Free Audit
+GET A FREE TEARDOWN
                       <Icon icon="ph:arrow-right" className="text-lg" />
                     </Link>
                   </div>
@@ -177,8 +181,8 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-20 text-center">
+        {/* Bottom CTA - hidden on mobile (keeps page lighter) */}
+        <div className="mt-20 text-center hidden sm:block">
           <div className="inline-block p-1 rounded-2xl bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md">
             <div className="bg-[#0a0a0a] rounded-xl px-8 py-6 sm:px-12 sm:py-8">
               <h3 className="text-2xl sm:text-3xl font-semibold text-white mb-3">

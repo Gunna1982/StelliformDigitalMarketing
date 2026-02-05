@@ -18,7 +18,9 @@
   }
 
   body {
-    @apply bg-black text-white antialiased;
+    /* Slightly lighter “ink” dark so sections read better than pure black */
+    background: #070A10;
+    @apply text-white antialiased;
     overflow-x: hidden;
     touch-action: pan-y pinch-zoom;
     overscroll-behavior-x: none;
