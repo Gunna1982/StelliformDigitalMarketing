@@ -1,6 +1,7 @@
 import BlogContent from '@/components/BlogContent';
 import { Metadata } from 'next';
 
+
 export const metadata: Metadata = {
   title: 'Blog - Stelliform Digital | Personal Injury Lead Gen & Marketing',
   description: 'Actionable, no-fluff marketing and intake insights for personal injury law firms: lead quality, conversion fixes, and what actually drives signed cases.',
