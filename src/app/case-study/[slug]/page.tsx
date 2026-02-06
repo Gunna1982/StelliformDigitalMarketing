@@ -18,9 +18,11 @@ const caseStudies = {
     ],
     technologies: ['Next.js', 'React', 'Tailwind CSS', 'Google Ads API', 'MyCase API', 'Zapier'],
     images: [
-      '/case-studies/mcphillip-1.jpg',
-      '/case-studies/mcphillip-2.jpg',
-      '/case-studies/mcphillip-3.jpg'
+      // Hero / “after” (new site)
+      '/case-studies/mcphillip/after/home-page-new.png',
+      // “Before” screenshots (old site)
+      '/case-studies/mcphillip/before/old-site-part-1.png',
+      '/case-studies/mcphillip/before/old-site-part-2.png'
     ],
     testimonial: {
       text: "The new website and lead generation system has transformed our practice. We're seeing higher quality leads and our team can manage them more efficiently.",
